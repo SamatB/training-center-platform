@@ -3,6 +3,7 @@ package com.training.userservice.service;
 import com.training.userservice.dto.request.UserRequest;
 import com.training.userservice.dto.response.UserResponse;
 import com.training.userservice.entity.User;
+import com.training.userservice.exception.UserNotFoundException;
 import com.training.userservice.mapper.UserMapper;
 import com.training.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,9 @@ public class UserService {
     public UserResponse getUserById(UUID id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Пользователь не найден с таким id: " + id));
+                        new UserNotFoundException(
+                                "Пользователь с таким id: " + id + " не найден"
+                        ));
 
         return userMapper.toResponse(user);
     }
@@ -43,7 +46,9 @@ public class UserService {
     public UserResponse updateUser(UUID id, UserRequest request) {
         User user = userRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Пользователь не найден с таким id: " + id));
+                        new UserNotFoundException(
+                                "Пользователь с таким id: " + id + " не найден"
+                        ));
 
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
@@ -58,7 +63,9 @@ public class UserService {
     public void deleteUser(UUID id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Пользователь не найден с таким id: " + id));
+                        new UserNotFoundException(
+                                "Пользователь с таким id: " + id + " не найден"
+                        ));
 
         userRepository.deleteById(user.getId());
     }
