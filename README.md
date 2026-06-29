@@ -154,10 +154,9 @@ Done
 
 Структура репозитория
 
-training-center-platform
+training-center-platform:
 │
-├── user-service
-
+├── user-service;
 ├── course-service
 ├── enrollment-service
 ├── notification-service
