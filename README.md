@@ -154,9 +154,9 @@ Done
 
 Структура репозитория
 
-training-center-platform:
-│
-├── user-service;
+```text
+training-center-platform
+├── user-service
 ├── course-service
 ├── enrollment-service
 ├── notification-service
@@ -166,15 +166,13 @@ training-center-platform:
 ├── gateway
 ├── discovery-service
 ├── config-server
-│
 ├── infrastructure
 │   ├── docker-compose.yml
 │   └── postgres
 │       └── init.sql
-│
 ├── README.md
 └── .gitignore
-
+```
 ---
 
 Описание сервисов
