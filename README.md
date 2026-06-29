@@ -1,4 +1,5 @@
-# 🎓 Training Center Platform
+> 🎓 Training Center Platform
+ ---
 
 «Обучающий микросервисный проект для изучения современной Java Backend-разработки.»
 
