@@ -157,6 +157,7 @@ Done
 training-center-platform
 │
 ├── user-service
+
 ├── course-service
 ├── enrollment-service
 ├── notification-service
