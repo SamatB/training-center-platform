@@ -658,3 +658,24 @@ git push origin TCP-15-create-user-controller
 ❗ Не брать новую задачу, пока предыдущая не прошла Code Review.
 
 ❗ Если возникли вопросы — не менять архитектуру самостоятельно, а обсудить решение с Team Lead.
+
+
+---
+> 📁 Структура микросервиса
+
+Каждый микросервис в проекте должен иметь единую структуру пакетов.
+
+```text
+src/main/java/com/training/{service-name}
+│
+├── config
+├── controller
+├── dto
+│   ├── request
+│   └── response
+├── entity
+├── exception
+├── mapper
+├── repository
+├── service
+└── {ServiceName}Application.java
