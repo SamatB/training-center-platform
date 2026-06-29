@@ -682,3 +682,48 @@ src/main/java/com/training/{service-name}
 ├── repository
 ├── service
 └── {ServiceName}Application.java
+```
+---
+>Roadmap - дорожная карта
+
+⬜ Этап 1
+CRUD
+
+⬜ Этап 2
+DTO
+Mapper
+Service
+Controller
+
+⬜ Этап 3
+Liquibase
+
+⬜ Этап 4
+Docker
+
+⬜ Этап 5
+Gateway
+
+⬜ Этап 6
+Eureka
+
+⬜ Этап 7
+OpenFeign
+
+⬜ Этап 8
+Kafka
+
+⬜ Этап 9
+Redis
+
+⬜ Этап 10
+Monitoring
+
+⬜ Этап 11
+Security
+
+⬜ Этап 12
+CI/CD
+
+⬜ Этап 13
+Kubernetes
