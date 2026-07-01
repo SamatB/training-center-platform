@@ -2,13 +2,16 @@ package com.training.enrollmentservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
 @Table(name = "enrollments")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Enrollment {
@@ -22,4 +25,5 @@ public class Enrollment {
 
     @Column(name = "course_id", nullable = false)
     private UUID courseId;
+
 }
