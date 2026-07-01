@@ -1,10 +1,19 @@
 package com.training.enrollmentservice.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
 @Table(name = "enrollments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Enrollment {
 
     @Id
@@ -17,35 +26,4 @@ public class Enrollment {
     @Column(name = "course_id", nullable = false)
     private UUID courseId;
 
-    public Enrollment() {
-    }
-
-    public Enrollment(UUID userId, UUID courseId) {
-        this.userId = userId;
-        this.courseId = courseId;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public UUID getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(UUID courseId) {
-        this.courseId = courseId;
-    }
 }
