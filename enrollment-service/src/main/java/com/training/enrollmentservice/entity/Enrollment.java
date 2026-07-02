@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -27,15 +26,4 @@ public class Enrollment {
     @Column(name = "course_id", nullable = false)
     private UUID courseId;
 
-    @Column(name = "status")
-    private String status;
-
-    @Column(name = "enrollment_date")
-    private LocalDateTime enrollmentDate;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }
