@@ -1,7 +1,11 @@
 package com.training.enrollmentservice.dto.request;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
@@ -18,3 +22,4 @@ public class EnrollmentRequest {
     @NotNull(message = "courseId не может быть null")
     private UUID courseId;
 }
+
