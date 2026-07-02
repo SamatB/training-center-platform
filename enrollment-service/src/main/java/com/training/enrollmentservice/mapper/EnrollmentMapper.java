@@ -12,11 +12,13 @@ public class EnrollmentMapper {
         Enrollment enrollment = new Enrollment();
         enrollment.setUserId(request.getUserId());
         enrollment.setCourseId(request.getCourseId());
+
         return enrollment;
     }
 
     public EnrollmentResponse toResponse(Enrollment enrollment) {
         EnrollmentResponse response = new EnrollmentResponse();
+
         response.setId(enrollment.getId());
         response.setUserId(enrollment.getUserId());
         response.setCourseId(enrollment.getCourseId());
@@ -24,6 +26,7 @@ public class EnrollmentMapper {
         response.setEnrollmentDate(enrollment.getEnrollmentDate());
         response.setCreatedAt(enrollment.getCreatedAt());
         response.setUpdatedAt(enrollment.getUpdatedAt());
+
         return response;
     }
 }
