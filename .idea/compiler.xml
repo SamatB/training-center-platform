@@ -6,17 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="course-service" />
         <module name="enrollment-service" />
-        <module name="user-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="course-service" target="21" />
+      <module name="user-service" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="course-service" options="-parameters" />
       <module name="enrollment-service" options="-parameters" />
-      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>
