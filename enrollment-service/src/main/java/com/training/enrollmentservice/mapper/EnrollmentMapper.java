@@ -10,7 +10,7 @@ public class EnrollmentMapper {
 
     public Enrollment toEntity(EnrollmentRequest request) {
         Enrollment enrollment = new Enrollment();
-        enrollment.setUserId(request.getUserId());
+        enrollment.setUserId(request.getUserId());   // ← исправлено!
         enrollment.setCourseId(request.getCourseId());
 
         return enrollment;
@@ -18,6 +18,7 @@ public class EnrollmentMapper {
 
     public EnrollmentResponse toResponse(Enrollment enrollment) {
         EnrollmentResponse response = new EnrollmentResponse();
+
         response.setId(enrollment.getId());
         response.setUserId(enrollment.getUserId());
         response.setCourseId(enrollment.getCourseId());
