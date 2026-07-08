@@ -1,0 +1,33 @@
+package com.courseservice.repository;
+
+import com.courseservice.entity.Course;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface CourseRepository extends JpaRepository<Course, Long> {
+
+    /**
+     * Поиск курса по точному названию
+     * @param title название курса
+     * @return Optional с найденным курсом или пустой Optional
+     */
+    Optional<Course> findByTitle(String title);
+
+    /**
+     * Проверка существования курса с указанным названием
+     * @param title название курса
+     * @return true если курс существует, false если нет
+     */
+    boolean existsByTitle(String title);
+
+    /**
+     * Поиск курсов по части названия (регистронезависимый)
+     * @param title часть названия для поиска
+     * @return список курсов, содержащих указанную подстроку в названии
+     */
+    List<Course> findByTitleContainingIgnoreCase(String title);
+}

@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
-      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/course" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.EnrollmentServiceApplication.executor": "Run",
-    "git-widget-placeholder": "feature/TCP-21-create-enrollment-service",
+    "git-widget-placeholder": "feature/TCP-10-course-entity",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -108,6 +110,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.EnrollmentServiceApplication">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="enrollment-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="enrollment-service" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="CourseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="course-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.training.courseservice.CourseServiceApplication" />
