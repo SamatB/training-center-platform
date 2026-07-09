@@ -22,4 +22,3 @@ public class EnrollmentRequest {
     @NotNull(message = "courseId не может быть null")
     private UUID courseId;
 }
-

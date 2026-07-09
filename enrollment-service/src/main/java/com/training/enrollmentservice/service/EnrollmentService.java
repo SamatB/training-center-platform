@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class EnrollmentService {
@@ -25,6 +24,7 @@ public class EnrollmentService {
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
         Enrollment enrollment = enrollmentMapper.toEntity(request);
+
         enrollment.setEnrollmentDate(LocalDateTime.now());
         enrollment.setCreatedAt(LocalDateTime.now());
         enrollment.setUpdatedAt(LocalDateTime.now());
@@ -32,13 +32,15 @@ public class EnrollmentService {
 
         Enrollment saved = enrollmentRepository.save(enrollment);
 
-        return enrollmentMapper.toResponse(saved);
+        return enrollmentMapper.toResponse(saved);   // ← возвращаем DTO через маппер
     }
 
     public EnrollmentResponse getEnrollmentById(UUID id) {
         Enrollment enrollment = enrollmentRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Enrollment not found with id: " + id));
+                        new RuntimeException(
+                                "Запись не найдена с id: " + id
+                        ));
 
         return enrollmentMapper.toResponse(enrollment);
     }
@@ -47,13 +49,15 @@ public class EnrollmentService {
         return enrollmentRepository.findAll()
                 .stream()
                 .map(enrollmentMapper::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public EnrollmentResponse updateEnrollment(UUID id, EnrollmentRequest request) {
         Enrollment enrollment = enrollmentRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Enrollment not found with id: " + id));
+                        new RuntimeException(
+                                "Запись не найдена с id: " + id
+                        ));
 
         enrollment.setUserId(request.getUserId());
         enrollment.setCourseId(request.getCourseId());
@@ -66,9 +70,7 @@ public class EnrollmentService {
 
     public void deleteEnrollment(UUID id) {
         Enrollment enrollment = enrollmentRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Enrollment not found with id: " + id));
-
+                .orElseThrow(() -> new RuntimeException("Запись не найдена с id: " + id));
         enrollmentRepository.deleteById(id);
     }
 }
