@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/controller/EnrollmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/training/courseservice/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/EnrollmentServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/EnrollmentServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/request/EnrollmentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/request/EnrollmentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/response/EnrollmentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/response/EnrollmentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,43 +58,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.enrollment-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.enrollment-service [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.enrollment-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EnrollmentServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/TCP-37-create-enrollment-controller&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.enrollment-service [clean].executor": "Run",
+    "Maven.enrollment-service [compile].executor": "Run",
+    "Maven.enrollment-service [install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EnrollmentServiceApplication.executor": "Run",
+    "git-widget-placeholder": "feature/TCP-15-Course-Repository",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
