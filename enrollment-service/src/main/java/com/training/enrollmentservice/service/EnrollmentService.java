@@ -3,6 +3,7 @@ package com.training.enrollmentservice.service;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.entity.Enrollment;
+import com.training.enrollmentservice.exception.EnrollmentNotFoundException;
 import com.training.enrollmentservice.mapper.EnrollmentMapper;
 import com.training.enrollmentservice.repository.EnrollmentRepository;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class EnrollmentService {
     public EnrollmentResponse getEnrollmentById(UUID id) {
         Enrollment enrollment = enrollmentRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new EnrollmentNotFoundException(
                                 "Запись не найдена с id: " + id
                         ));
 
@@ -55,7 +56,7 @@ public class EnrollmentService {
     public EnrollmentResponse updateEnrollment(UUID id, EnrollmentRequest request) {
         Enrollment enrollment = enrollmentRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new EnrollmentNotFoundException(
                                 "Запись не найдена с id: " + id
                         ));
 
@@ -70,7 +71,11 @@ public class EnrollmentService {
 
     public void deleteEnrollment(UUID id) {
         Enrollment enrollment = enrollmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Запись не найдена с id: " + id));
+                .orElseThrow(() ->
+                        new EnrollmentNotFoundException(
+                        "Запись не найдена с id: " + id
+                ));
+
         enrollmentRepository.deleteById(id);
     }
 }
