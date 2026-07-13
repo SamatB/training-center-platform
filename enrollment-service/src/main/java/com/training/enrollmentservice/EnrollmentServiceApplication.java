@@ -12,3 +12,4 @@ public class EnrollmentServiceApplication {
         SpringApplication.run(EnrollmentServiceApplication.class, args);
     }
 }
+

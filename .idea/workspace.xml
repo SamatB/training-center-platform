@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
-      <change afterPath="$PROJECT_DIR$/.idea/course" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="feat: add Swagger/OpenAPI for Enrollment Service (TCP-39)">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/training/courseservice/repository/CourseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/exception/EnrollmentNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/exception/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/course" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_07_2026_21_46_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_07_2026_21_46__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/EnrollmentServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/EnrollmentServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/request/EnrollmentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/request/EnrollmentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/response/EnrollmentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/dto/response/EnrollmentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +67,7 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+    <option name="explicitlyEnabledProfiles" value="native" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -75,7 +92,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.EnrollmentServiceApplication.executor": "Run",
-    "git-widget-placeholder": "feature/TCP-10-course-entity",
+    "git-widget-placeholder": "#25 on Merging feature/TCP-39-setup-swagger",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -102,7 +119,7 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="EnrollmentServiceApplication" value="FAILED" />
+              <entry key="EnrollmentServiceApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -110,17 +127,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.EnrollmentServiceApplication">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="enrollment-service" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="enrollment-service" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <configuration name="CourseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="course-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.training.courseservice.CourseServiceApplication" />
@@ -172,6 +178,7 @@
       <workItem from="1782990836261" duration="15331000" />
       <workItem from="1783049826974" duration="1761000" />
       <workItem from="1783096826275" duration="8703000" />
+      <workItem from="1783961785636" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: add Lombok annotations to Enrollment for TCP-13">
       <option name="closed" value="true" />
