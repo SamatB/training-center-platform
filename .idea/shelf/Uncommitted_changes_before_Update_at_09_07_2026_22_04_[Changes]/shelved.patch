@@ -1,0 +1,257 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"enrollment-service\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel>\r\n      <module name=\"course-service\" target=\"21\" />\r\n      <module name=\"user-service\" target=\"21\" />\r\n    </bytecodeTargetLevel>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"enrollment-service\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision f570def943ef46e2ecde3cd3d07664810dcd99d6)
++++ b/.idea/compiler.xml	(date 1783441100415)
+@@ -6,17 +6,17 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
++        <module name="course-service" />
+         <module name="enrollment-service" />
++        <module name="user-service" />
+       </profile>
+     </annotationProcessing>
+-    <bytecodeTargetLevel>
+-      <module name="course-service" target="21" />
+-      <module name="user-service" target="21" />
+-    </bytecodeTargetLevel>
+   </component>
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="course-service" options="-parameters" />
+       <module name="enrollment-service" options="-parameters" />
++      <module name="user-service" options="-parameters" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/enrollment-service/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"openjdk-25\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision f570def943ef46e2ecde3cd3d07664810dcd99d6)
++++ b/.idea/misc.xml	(date 1783441100407)
+@@ -5,6 +5,8 @@
+     <option name="originalFiles">
+       <list>
+         <option value="$PROJECT_DIR$/enrollment-service/pom.xml" />
++        <option value="$PROJECT_DIR$/course-service/pom.xml" />
++        <option value="$PROJECT_DIR$/user-service/pom.xml" />
+       </list>
+     </option>
+   </component>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2b658c27-823a-4ef1-acf1-790d21141f17\" name=\"Changes\" comment=\"fix: restore missing fields in Enrollment\">\r\n      <change afterPath=\"$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Aiza-naz&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/SamatB/training-center-platform.git&quot;,\r\n    &quot;accountId&quot;: &quot;8eccf9dc-d3ba-4556-81f4-159109e5d41c&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"3FowD9SuifQ37uX6dtixFo82ZII\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Maven.enrollment-service [clean].executor\": \"Run\",\r\n    \"Maven.enrollment-service [compile].executor\": \"Run\",\r\n    \"Maven.enrollment-service [install].executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\r\n    \"Spring Boot.EnrollmentServiceApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"feature/TCP-21-create-enrollment-service\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"run.configurations.included.in.services\": \"true\",\r\n    \"settings.editor.selected.configurable\": \"reference.projectsettings.compiler.annotationProcessors\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationTypes\">\r\n      <set>\r\n        <option value=\"KtorApplicationConfigurationType\" />\r\n        <option value=\"MicronautRunConfigurationType\" />\r\n        <option value=\"QuarkusRunConfigurationType\" />\r\n        <option value=\"SpringBootApplicationConfigurationType\" />\r\n      </set>\r\n    </option>\r\n    <option name=\"configurationStatuses\">\r\n      <map>\r\n        <entry key=\"SpringBootApplicationConfigurationType\">\r\n          <value>\r\n            <map>\r\n              <entry key=\"EnrollmentServiceApplication\" value=\"FAILED\" />\r\n            </map>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.EnrollmentServiceApplication\">\r\n    <configuration name=\"CourseServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"course-service\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.training.courseservice.CourseServiceApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"EnrollmentServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"enrollment-service\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.training.enrollmentservice.EnrollmentServiceApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UserServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"user-service\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.training.userservice.UserServiceApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-IU-253.28294.334\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2b658c27-823a-4ef1-acf1-790d21141f17\" name=\"Changes\" comment=\"\" />\r\n      <created>1782754608644</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1782754608644</updated>\r\n      <workItem from=\"1782754612710\" duration=\"10086000\" />\r\n      <workItem from=\"1782771447526\" duration=\"2285000\" />\r\n      <workItem from=\"1782855601188\" duration=\"4326000\" />\r\n      <workItem from=\"1782861095353\" duration=\"1503000\" />\r\n      <workItem from=\"1782890617295\" duration=\"4977000\" />\r\n      <workItem from=\"1782936256408\" duration=\"2365000\" />\r\n      <workItem from=\"1782942211474\" duration=\"6241000\" />\r\n      <workItem from=\"1782948662565\" duration=\"27000\" />\r\n      <workItem from=\"1782948876442\" duration=\"9327000\" />\r\n      <workItem from=\"1782987838348\" duration=\"1662000\" />\r\n      <workItem from=\"1782989882258\" duration=\"228000\" />\r\n      <workItem from=\"1782990836261\" duration=\"15331000\" />\r\n      <workItem from=\"1783049826974\" duration=\"1761000\" />\r\n      <workItem from=\"1783096826275\" duration=\"8703000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"refactor: add Lombok annotations to Enrollment for TCP-13\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1782859724062</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1782859724062</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"refactor: remove @Data, use @Getter/@Setter and fix import\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1782901032443</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1782901032443</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"fix: restore missing fields in Enrollment\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1783050798978</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1783050798978</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"refactor: add Lombok annotations to Enrollment for TCP-13\" />\r\n    <MESSAGE value=\"refactor: remove @Data, use @Getter/@Setter and fix import\" />\r\n    <MESSAGE value=\"fix: restore missing fields in Enrollment\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"fix: restore missing fields in Enrollment\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f570def943ef46e2ecde3cd3d07664810dcd99d6)
++++ b/.idea/workspace.xml	(date 1783623857976)
+@@ -4,11 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
+-      <change afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/service/EnrollmentService.java" afterDir="false" />
++    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="refactor: remove @Data, use @Getter/@Setter and fix import">
++      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/entity/Enrollment.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/enrollment-service/src/main/java/com/training/enrollmentservice/mapper/EnrollmentMapper.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -26,7 +26,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="feature/TCP-24-user-not-found-exception" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -37,12 +37,12 @@
+     &quot;assignee&quot;: &quot;Aiza-naz&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/SamatB/training-center-platform.git&quot;,
+-    &quot;accountId&quot;: &quot;8eccf9dc-d3ba-4556-81f4-159109e5d41c&quot;
+-  }
+-}</component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/SamatB/training-center-platform.git",
++    "accountId": "9abf7a9c-8cfb-4ca9-b56d-3cc86d114163"
++  }
++}]]></component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+@@ -58,34 +58,34 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Maven.enrollment-service [clean].executor": "Run",
+-    "Maven.enrollment-service [compile].executor": "Run",
+-    "Maven.enrollment-service [install].executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+-    "Spring Boot.EnrollmentServiceApplication.executor": "Run",
+-    "git-widget-placeholder": "feature/TCP-21-create-enrollment-service",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "run.configurations.included.in.services": "true",
+-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Maven.enrollment-service [clean].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.enrollment-service [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.enrollment-service [install].executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
++    &quot;Spring Boot.EnrollmentServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunDashboard">
+     <option name="configurationTypes">
+       <set>
+@@ -94,20 +94,20 @@
+         <option value="QuarkusRunConfigurationType" />
+         <option value="SpringBootApplicationConfigurationType" />
+       </set>
+-    </option>
+-    <option name="configurationStatuses">
+-      <map>
+-        <entry key="SpringBootApplicationConfigurationType">
+-          <value>
+-            <map>
+-              <entry key="EnrollmentServiceApplication" value="FAILED" />
+-            </map>
+-          </value>
+-        </entry>
+-      </map>
+     </option>
+   </component>
+   <component name="RunManager" selected="Spring Boot.EnrollmentServiceApplication">
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="enrollment-service" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="enrollment-service" />
++      <option name="filePath" />
++      <method v="2" />
++    </configuration>
+     <configuration name="CourseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+       <module name="course-service" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="com.training.courseservice.CourseServiceApplication" />
+@@ -157,8 +157,7 @@
+       <workItem from="1782987838348" duration="1662000" />
+       <workItem from="1782989882258" duration="228000" />
+       <workItem from="1782990836261" duration="15331000" />
+-      <workItem from="1783049826974" duration="1761000" />
+-      <workItem from="1783096826275" duration="8703000" />
++      <workItem from="1783623157885" duration="694000" />
+     </task>
+     <task id="LOCAL-00001" summary="refactor: add Lombok annotations to Enrollment for TCP-13">
+       <option name="closed" value="true" />
+@@ -176,15 +175,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1782901032443</updated>
+     </task>
+-    <task id="LOCAL-00003" summary="fix: restore missing fields in Enrollment">
+-      <option name="closed" value="true" />
+-      <created>1783050798978</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1783050798978</updated>
+-    </task>
+-    <option name="localTasksCounter" value="4" />
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -193,7 +184,6 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="refactor: add Lombok annotations to Enrollment for TCP-13" />
+     <MESSAGE value="refactor: remove @Data, use @Getter/@Setter and fix import" />
+-    <MESSAGE value="fix: restore missing fields in Enrollment" />
+-    <option name="LAST_COMMIT_MESSAGE" value="fix: restore missing fields in Enrollment" />
++    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove @Data, use @Getter/@Setter and fix import" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/enrollment-service/src/main/java\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision f570def943ef46e2ecde3cd3d07664810dcd99d6)
++++ b/.idea/encodings.xml	(date 1783441100425)
+@@ -1,6 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/course-service/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/enrollment-service/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/user-service/src/main/java" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file

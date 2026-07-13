@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/training/userservice/config/OpenApiConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="TCP-28-swagger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +106,7 @@
           <value>
             <map>
               <entry key="EnrollmentServiceApplication" value="FAILED" />
+              <entry key="UserServiceApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -182,7 +176,7 @@
       <workItem from="1782990836261" duration="15331000" />
       <workItem from="1783049826974" duration="1761000" />
       <workItem from="1783096826275" duration="8703000" />
-      <workItem from="1783977834702" duration="754000" />
+      <workItem from="1783977834702" duration="1787000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: add Lombok annotations to Enrollment for TCP-13">
       <option name="closed" value="true" />
@@ -208,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783050798978</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="TCP-28-swagger">
+      <option name="closed" value="true" />
+      <created>1783978716470</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783978716470</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +220,7 @@
     <MESSAGE value="refactor: add Lombok annotations to Enrollment for TCP-13" />
     <MESSAGE value="refactor: remove @Data, use @Getter/@Setter and fix import" />
     <MESSAGE value="fix: restore missing fields in Enrollment" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: restore missing fields in Enrollment" />
+    <MESSAGE value="TCP-28-swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="TCP-28-swagger" />
   </component>
 </project>
