@@ -178,7 +178,7 @@
       <workItem from="1782990836261" duration="15331000" />
       <workItem from="1783049826974" duration="1761000" />
       <workItem from="1783096826275" duration="8703000" />
-      <workItem from="1783961785636" duration="822000" />
+      <workItem from="1783961785636" duration="1178000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: add Lombok annotations to Enrollment for TCP-13">
       <option name="closed" value="true" />
