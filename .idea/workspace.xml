@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b658c27-823a-4ef1-acf1-790d21141f17" name="Changes" comment="fix: restore missing fields in Enrollment">
-      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/training/courseservice/dto/request/CourseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/training/courseservice/dto/response/CourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/course" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/SamatB/training-center-platform.git&quot;,
-    &quot;accountId&quot;: &quot;c5c9dcea-e7d7-4500-b724-8464b40581dc&quot;
+    &quot;accountId&quot;: &quot;8eccf9dc-d3ba-4556-81f4-159109e5d41c&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -72,7 +75,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.EnrollmentServiceApplication.executor": "Run",
-    "git-widget-placeholder": "feature/TCP-19-Course-Request-Response",
+    "git-widget-placeholder": "feature/TCP-10-course-entity",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -99,7 +102,7 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="EnrollmentServiceApplication" value="STOPPED" />
+              <entry key="EnrollmentServiceApplication" value="FAILED" />
             </map>
           </value>
         </entry>
@@ -108,13 +111,13 @@
   </component>
   <component name="RunManager" selected="Spring Boot.EnrollmentServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="courseRepository" />
+      <module name="enrollment-service" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="courseRepository" />
+      <module name="enrollment-service" />
       <option name="filePath" />
       <method v="2" />
     </configuration>
@@ -169,8 +172,6 @@
       <workItem from="1782990836261" duration="15331000" />
       <workItem from="1783049826974" duration="1761000" />
       <workItem from="1783096826275" duration="8703000" />
-      <workItem from="1783961785636" duration="1178000" />
-      <workItem from="1784140230941" duration="382000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: add Lombok annotations to Enrollment for TCP-13">
       <option name="closed" value="true" />

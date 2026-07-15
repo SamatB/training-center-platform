@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: enrollment-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/enrollment_db
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+server:
+  port: 8083
