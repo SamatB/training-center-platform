@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-enrollments-table
+      author: student
+      changes:
+        - createTable:
+            tableName: enrollments
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: uuid
+              - column:
+                  name: course_id
+                  type: uuid
+              - column:
+                  name: status
+                  type: varchar(100)
+              - column:
+                  name: enrollment_date
+                  type: timestamp
+              - column:
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: updated_at
+                  type: timestamp
