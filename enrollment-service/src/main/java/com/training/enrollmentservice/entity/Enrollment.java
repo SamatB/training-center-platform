@@ -39,3 +39,4 @@ public class Enrollment {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
+
