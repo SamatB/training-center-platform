@@ -3,6 +3,7 @@ package com.training.courseservice.service;
 import com.training.courseservice.dto.request.CourseRequest;
 import com.training.courseservice.dto.response.CourseResponse;
 import com.training.courseservice.entity.Course;
+import com.training.courseservice.exception.CourseNotFoundException;
 import com.training.courseservice.mapper.CourseMapper;
 import com.training.courseservice.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class CourseService {
     public CourseResponse getCourseById(UUID id) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Курс с таким идентификатором не найден: " + id));
+                        new CourseNotFoundException("Курс с таким идентификатором: " + id + " не найден"));
 
         return courseMapper.toResponse(course);
     }
@@ -42,7 +43,7 @@ public class CourseService {
     public CourseResponse updateCourse(UUID id, CourseRequest request) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Курс с таким идентификатором не найден: " + id));
+                        new CourseNotFoundException("Курс с таким идентификатором: " + id + " не найден"));
 
         course.setTitle(request.getTitle());
         course.setDescription(request.getDescription());
@@ -58,7 +59,7 @@ public class CourseService {
 
     public void deleteCourse(UUID id) {
         if (!courseRepository.existsById(id)) {
-            throw new RuntimeException("Курс с таким идентификатором не найден: " + id);
+            throw new CourseNotFoundException("Курс с таким идентификатором: " + id + " не найден");
         }
 
         courseRepository.deleteById(id);
