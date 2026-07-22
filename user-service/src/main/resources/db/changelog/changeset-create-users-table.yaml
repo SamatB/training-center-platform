@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users-table
+      author: albert
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: first_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: last_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+              - column:
+                  name: password
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: status
+                  type: varchar
+                  defaultValue: ACTIVE
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: update_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
