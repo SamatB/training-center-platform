@@ -3,6 +3,7 @@ databaseChangeLog:
       id: 002-create-notifications-table
       author: student
       changes:
+
         - createTable:
             tableName: notifications
             columns:
