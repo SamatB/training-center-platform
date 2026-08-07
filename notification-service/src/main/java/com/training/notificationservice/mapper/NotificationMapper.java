@@ -3,7 +3,10 @@ package com.training.notificationservice.mapper;
 import com.training.notificationservice.dto.NotificationCreateRequest;
 import com.training.notificationservice.dto.NotificationResponse;
 import com.training.notificationservice.entity.Notification;
+import com.training.notificationservice.entity.NotificationStatus;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class NotificationMapper {

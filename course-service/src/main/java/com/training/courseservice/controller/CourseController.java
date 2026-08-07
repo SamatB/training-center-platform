@@ -5,11 +5,13 @@ import com.training.courseservice.dto.response.CourseResponse;
 import com.training.courseservice.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/courses")
 @RequiredArgsConstructor
@@ -24,6 +26,7 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public CourseResponse getCourseById(@PathVariable UUID id) {
+        log.info("Был запрос на получения курса по id: " + id);
         return courseService.getCourseById(id);
     }
 

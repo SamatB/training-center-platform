@@ -12,9 +12,7 @@ public class UserClient {
 
     private final RestClient restClient;
 
-    public UserClient(
-            @Qualifier("userRestClient") RestClient restClient
-    ) {
+    public UserClient(@Qualifier("userRestClient") RestClient restClient) {
         this.restClient = restClient;
     }
 

@@ -8,6 +8,8 @@ import com.training.enrollmentservice.entity.Enrollment;
 import com.training.enrollmentservice.exception.EnrollmentNotFoundException;
 import com.training.enrollmentservice.mapper.EnrollmentMapper;
 import com.training.enrollmentservice.repository.EnrollmentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,8 @@ import java.util.UUID;
 
 @Service
 public class EnrollmentService {
+
+    private static final Logger logger = LoggerFactory.getLogger(EnrollmentService.class);
 
     private final EnrollmentRepository enrollmentRepository;
     private final EnrollmentMapper enrollmentMapper;
@@ -31,9 +35,13 @@ public class EnrollmentService {
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
 
+        logger.info("Отправляем запрос в user-service...");
         userClient.getUserById(request.getUserId());
+        logger.info("Получили ответ от user-service...");
 
+        logger.info("Отправляем запрос в course-service...");
         courseClient.getCourseById(request.getCourseId());
+        logger.info("Получили ответ от course-service...");
 
         Enrollment enrollment = enrollmentMapper.toEntity(request);
 

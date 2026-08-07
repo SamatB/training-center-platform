@@ -20,6 +20,7 @@ public class CourseService {
     private final CourseMapper courseMapper;
 
     public CourseResponse createCourse(CourseRequest request) {
+
         Course course = courseMapper.toEntity(request);
         Course savedCourse = courseRepository.save(course);
         return courseMapper.toResponse(savedCourse);
