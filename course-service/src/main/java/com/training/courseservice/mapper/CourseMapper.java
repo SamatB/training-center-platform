@@ -5,6 +5,8 @@ import com.training.courseservice.dto.response.CourseResponse;
 import com.training.courseservice.entity.Course;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class CourseMapper {
 
@@ -20,6 +22,8 @@ public class CourseMapper {
                 .durationHours(request.getDurationHours())
                 .price(request.getPrice())
                 .active(request.getActive())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 
