@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
 
-@FeignClient(
-        name = "course-service",
-        url = "${clients.course-service.url}"
-)
+@FeignClient(name = "course-service", url = "${clients.course-service.url}")
 public interface CourseClient {
 
     @GetMapping("/api/v1/courses/{id}")
     CourseResponse getCourseById(@PathVariable("id") UUID courseId);
+
+
 }
