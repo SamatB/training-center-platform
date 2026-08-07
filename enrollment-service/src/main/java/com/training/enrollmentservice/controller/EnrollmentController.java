@@ -1,5 +1,7 @@
 package com.training.enrollmentservice.controller;
 
+import com.training.enrollmentservice.client.UserClient;
+import com.training.enrollmentservice.client.dto.UserResponse;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.service.EnrollmentService;

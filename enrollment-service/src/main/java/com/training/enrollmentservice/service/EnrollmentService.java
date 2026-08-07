@@ -1,5 +1,7 @@
 package com.training.enrollmentservice.service;
 
+import com.training.enrollmentservice.client.CourseClient;
+import com.training.enrollmentservice.client.UserClient;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.entity.Enrollment;
@@ -17,13 +19,22 @@ public class EnrollmentService {
 
     private final EnrollmentRepository enrollmentRepository;
     private final EnrollmentMapper enrollmentMapper;
+    private final UserClient userClient;
+    private final CourseClient courseClient;
 
-    public EnrollmentService(EnrollmentRepository enrollmentRepository, EnrollmentMapper enrollmentMapper) {
+    public EnrollmentService(EnrollmentRepository enrollmentRepository, EnrollmentMapper enrollmentMapper, UserClient userClient, CourseClient courseClient) {
         this.enrollmentRepository = enrollmentRepository;
         this.enrollmentMapper = enrollmentMapper;
+        this.userClient = userClient;
+        this.courseClient = courseClient;
     }
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
+
+        userClient.getUserById(request.getUserId());
+
+        courseClient.getCourseById(request.getCourseId());
+
         Enrollment enrollment = enrollmentMapper.toEntity(request);
 
         enrollment.setEnrollmentDate(LocalDateTime.now());

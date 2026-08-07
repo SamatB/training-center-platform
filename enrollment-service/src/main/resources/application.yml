@@ -18,3 +18,10 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
+
+clients:
+  user-service:
+    url: http://localhost:8081
+
+  course-service:
+    url: http://localhost:8082
