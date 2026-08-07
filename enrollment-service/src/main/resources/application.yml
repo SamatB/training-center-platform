@@ -1,20 +1,20 @@
+server:
+  port: 8083
+
 spring:
   application:
     name: enrollment-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/enrollment_db
+    url: jdbc:postgresql://localhost:5435/enrollment_db
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: none
-    show-sql: true
 
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
-
-server:
-  port: 8083
