@@ -3,7 +3,7 @@ spring:
     name: notification-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/notification_db
+    url: jdbc:postgresql://localhost:5436/notification_db
     username: postgres
     password: postgres
 
