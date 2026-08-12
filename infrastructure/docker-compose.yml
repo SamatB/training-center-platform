@@ -36,7 +36,20 @@ services:
     volumes:
       - enrollment-postgres-data:/var/lib/postgresql/data
 
+  notification-postgres:
+    image: postgres:16
+    container_name: notification-postgres
+    environment:
+      POSTGRES_DB: notification_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5436:5432"
+    volumes:
+      - notification-postgres-data:/var/lib/postgresql/data
+
 volumes:
   user-postgres-data:
   course-postgres-data:
   enrollment-postgres-data:
+  notification-postgres-data:
