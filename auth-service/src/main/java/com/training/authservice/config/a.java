@@ -1,4 +1,4 @@
-package com.training.authservice.config.a;
+package com.training.authservice.config;
 
 public class a {
 }

@@ -1,4 +1,4 @@
-package com.training.authservice.controller.a;
+package com.training.authservice.controller;
 
 public class a {
 }
