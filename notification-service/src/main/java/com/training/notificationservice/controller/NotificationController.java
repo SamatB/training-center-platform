@@ -2,6 +2,7 @@ package com.training.notificationservice.controller;
 import com.training.notificationservice.dto.NotificationCreateRequest;
 import com.training.notificationservice.dto.NotificationResponse;
 import com.training.notificationservice.service.NotificationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class NotificationController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public NotificationResponse create(
-            @RequestBody NotificationCreateRequest request
+            @Valid @RequestBody NotificationCreateRequest request
             ) {
         return notificationService.create(request);
     }
