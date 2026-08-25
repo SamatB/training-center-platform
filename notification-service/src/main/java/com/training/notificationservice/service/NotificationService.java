@@ -19,6 +19,7 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final NotificationMapper notificationMapper;
+    private final EmailService emailService;
 
     @Transactional
     public NotificationResponse create(NotificationCreateRequest request) {
@@ -44,5 +45,8 @@ public class NotificationService {
         Notification foundNotification = notification.get();
 
         return notificationMapper.toResponse(foundNotification);
+    }
+    public void sendEmail(String to,String subject,String message){
+        emailService.sendEmail(to,subject,message);
     }
 }

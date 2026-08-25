@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import com.training.notificationservice.dto.EmailRequest;
 
 import java.util.UUID;
 
@@ -69,6 +70,35 @@ public class NotificationController {
     public NotificationResponse getById(@PathVariable UUID id) {
 
         return notificationService.getById(id);
+    }
+    @PostMapping("/email")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(
+            summary = "Send email",
+            description = "Sends an email notification"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Email sent successfully"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid request data"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Failed to send email"
+            )
+    })
+    public void sendEmail(
+            @Valid @RequestBody EmailRequest request
+    ) {
+        notificationService.sendEmail(
+                request.to(),
+                request.subject(),
+                request.message()
+        );
     }
 
 }
