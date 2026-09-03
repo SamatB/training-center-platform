@@ -18,6 +18,9 @@ public class LoginRequest {
     private String email;
 
     @NotBlank(message = "Требуется пароль")
-    @Size(min = 8, message = "Пароль должен содержать не менее 8 символов")
-    private String password;
+    @Size(
+            min = 8,
+            max = 100,
+            message = "Пароль должен содержать от 8 до 100 символов"
+    )    private String password;
 }
