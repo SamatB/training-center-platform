@@ -2,11 +2,13 @@ package com.training.authservice.service;
 
 import com.training.authservice.dto.request.RegisterRequest;
 import com.training.authservice.dto.response.UserAccountResponse;
+import com.training.authservice.entity.Role;
 import com.training.authservice.entity.UserAccount;
 import com.training.authservice.exception.EntityAlreadyExistsException;
 import com.training.authservice.mapper.UserAccountMapper;
 import com.training.authservice.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,7 @@ public class UserAccountService {
 
     private final UserAccountRepository userAccountRepository;
     private final UserAccountMapper userAccountMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public UserAccountResponse register(RegisterRequest request) {
 
@@ -31,11 +34,11 @@ public class UserAccountService {
 
         UserAccount userAccount = userAccountMapper.toEntity(request);
 
-        userAccount.setId(UUID.randomUUID());
-
+        userAccount.setRole(Role.STUDENT);
         LocalDateTime now = LocalDateTime.now();
         userAccount.setCreatedAt(now);
         userAccount.setUpdatedAt(now);
+        userAccount.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userAccount.setEnabled(true);
 

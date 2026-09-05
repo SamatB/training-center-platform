@@ -19,7 +19,6 @@ public class UserAccountMapper {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(request.getPassword())
-                .role(request.getRole())
                 .enabled(true)
                 .build();
     }
