@@ -64,11 +64,4 @@ public class RegisterRequest {
             format = "password"
     )
     private String password;
-
-    @NotNull(message = "Роль не должна быть null")
-    @Schema(
-            description = "Роль пользователя",
-            example = "STUDENT"
-    )
-    private Role role;
 }
