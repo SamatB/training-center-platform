@@ -1,5 +1,73 @@
 services:
 
+  kafka:
+    image: apache/kafka:3.9.1
+    container_name: training-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      # Уникальный ID этого узла Kafka внутри кластера.
+      # Если Kafka-сервер один — достаточно 1.
+      KAFKA_NODE_ID: 1
+
+      # Какие роли выполняет этот узел:
+      # broker — принимает, хранит и отдаёт сообщения;
+      # controller — управляет метаданными Kafka-кластера.
+      # У нас один контейнер выполняет обе роли.
+      KAFKA_PROCESS_ROLES: broker,controller
+
+      # На каких внутренних портах Kafka принимает соединения.
+      # 9092 — приложения (Producer/Consumer) общаются с broker.
+      # 9093 — служебное взаимодействие controller.
+      KAFKA_LISTENERS: PLAINTEXT_HOST://:9092,PLAINTEXT_DOCKER://:29092,CONTROLLER://:9093
+
+      # Адрес, который Kafka сообщает клиентам:
+      # "подключайтесь ко мне через localhost:9092".
+      # Наши Spring Boot сервисы запускаются локально из IntelliJ,
+      # поэтому для них Kafka действительно находится на localhost.
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_HOST://localhost:9092,PLAINTEXT_DOCKER://training-kafka:29092
+
+      # Говорим Kafka, какой listener предназначен для controller.
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      # Указываем протокол для каждого listener.
+      # PLAINTEXT означает обычное соединение без SSL/TLS.
+      # Для локальной учебной среды этого достаточно.
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_DOCKER:PLAINTEXT
+
+      # Список controller'ов KRaft-кластера.
+      # Формат: nodeId@host:port
+      # У нас один controller:
+      # nodeId = 1, адрес = localhost, порт = 9093.
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+
+      # Системный topic __consumer_offsets хранит offset'ы Consumer Group.
+      # В production обычно есть несколько реплик.
+      # У нас один broker → replication factor должен быть 1.
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      # Количество реплик внутренних данных Kafka Transactions.
+      # Один broker → ставим 1.
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+      # Минимальное количество синхронизированных реплик,
+      # необходимое Kafka Transactions.
+      # Один broker → только 1.
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_DOCKER
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: training-kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: training-center
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: training-kafka:29092
+    depends_on:
+      - kafka
+
   user-postgres:
     image: postgres:16
     container_name: user-postgres

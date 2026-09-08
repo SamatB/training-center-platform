@@ -3,7 +3,9 @@ package com.training.enrollmentservice.service;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.entity.Enrollment;
+import com.training.enrollmentservice.event.EnrollmentCreatedEvent;
 import com.training.enrollmentservice.exception.EnrollmentNotFoundException;
+import com.training.enrollmentservice.kafka.EnrollmentEventProducer;
 import com.training.enrollmentservice.mapper.EnrollmentMapper;
 import com.training.enrollmentservice.repository.EnrollmentRepository;
 import org.springframework.stereotype.Service;
@@ -17,10 +19,12 @@ public class EnrollmentService {
 
     private final EnrollmentRepository enrollmentRepository;
     private final EnrollmentMapper enrollmentMapper;
+    private final EnrollmentEventProducer enrollmentEventProducer;
 
-    public EnrollmentService(EnrollmentRepository enrollmentRepository, EnrollmentMapper enrollmentMapper) {
+    public EnrollmentService(EnrollmentRepository enrollmentRepository, EnrollmentMapper enrollmentMapper, EnrollmentEventProducer enrollmentEventProducer) {
         this.enrollmentRepository = enrollmentRepository;
         this.enrollmentMapper = enrollmentMapper;
+        this.enrollmentEventProducer = enrollmentEventProducer;
     }
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
@@ -32,6 +36,14 @@ public class EnrollmentService {
         enrollment.setStatus("ACTIVE");
 
         Enrollment saved = enrollmentRepository.save(enrollment);
+
+        EnrollmentCreatedEvent event = new EnrollmentCreatedEvent(
+                saved.getId(),
+                saved.getUserId(),
+                saved.getCourseId()
+
+        );
+        enrollmentEventProducer.sendEnrollmentCreatedEvent(event); //отправка события в Kafka
 
         return enrollmentMapper.toResponse(saved);   // ← возвращаем DTO через маппер
     }
