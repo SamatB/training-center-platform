@@ -32,6 +32,9 @@
         <module>enrollment-service</module>
         <module>notification-service</module>
         <module>discovery-service</module>
+        <module>payment-service</module>
+        <module>document-service</module>
+        <module>auth-service</module>
     </modules>
 
     <dependencyManagement>

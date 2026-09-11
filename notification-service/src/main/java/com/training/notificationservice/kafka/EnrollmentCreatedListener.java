@@ -36,6 +36,6 @@ public class EnrollmentCreatedListener {
                 "Вы успешно записаны на курс. ID записи на курс: " + event.enrollmentId()
         );
 
-        log.info("Уведомление о записи на курс отправлен на {}", user.email());
+        log.info("Уведомление о записи на курс отправлено на {}", user.email());
     }
 }

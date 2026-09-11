@@ -126,7 +126,31 @@ services:
     ports:
       - "5437:5432"
     volumes:
-      - auth-postgres-data:/var/lib/postgresql/data
+      - auth-postgres-data:/var/lib/postgresql/data\
+
+  payment-postgres:
+    image: postgres:16
+    container_name: payment-postgres
+    environment:
+      POSTGRES_DB: payment_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5438:5432"
+    volumes:
+      - payment_db-postgres-data:/var/lib/postgresql/data
+
+  document-postgres:
+      image: postgres:16
+      container_name: document-postgres
+      environment:
+        POSTGRES_DB: document_db
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+      ports:
+        - "5439:5432"
+      volumes:
+        - document_db-postgres-data:/var/lib/postgresql/data
 
 volumes:
   user-postgres-data:
@@ -134,3 +158,5 @@ volumes:
   enrollment-postgres-data:
   notification-postgres-data:
   auth-postgres-data:
+  payment_db-postgres-data:
+  document_db-postgres-data:

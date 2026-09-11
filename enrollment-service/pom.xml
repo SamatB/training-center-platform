@@ -14,7 +14,7 @@
 
     <artifactId>enrollment-service</artifactId>
     <name>enrollment-service</name>
-    <description>Enrollment Service for Training Center Platform</description>
+    <description>Сервис управления записями студентов на курсы Training Center Platform</description>
 
     <dependencies>
         <dependency>

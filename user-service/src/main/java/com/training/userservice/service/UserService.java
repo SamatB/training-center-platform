@@ -1,17 +1,19 @@
 package com.training.userservice.service;
 
-import com.training.userservice.dto.request.UserRequest;
 import com.training.userservice.dto.response.UserResponse;
 import com.training.userservice.entity.User;
 import com.training.userservice.exception.UserNotFoundException;
 import com.training.userservice.mapper.UserMapper;
 import com.training.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -19,54 +21,36 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public UserResponse createUser(UserRequest request) {
-        User user = userMapper.toEntity(request);
-        User savedUser = userRepository.save(user);
-
-        return userMapper.toResponse(savedUser);
-    }
-
+    @Transactional(readOnly = true)
     public UserResponse getUserById(UUID id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() ->
-                        new UserNotFoundException(
-                                "Пользователь с таким id: " + id + " не найден"
-                        ));
+        log.info("Получение профиля пользователя по id={}", id);
 
+        User user = findUserById(id);
+
+        log.info("Профиль пользователя id={} успешно получен", id);
         return userMapper.toResponse(user);
     }
 
+    @Transactional(readOnly = true)
     public List<UserResponse> getAllUsers() {
-        return userRepository.findAll()
+        log.info("Получение списка профилей пользователей");
+
+        List<UserResponse> users = userRepository.findAll()
                 .stream()
                 .map(userMapper::toResponse)
                 .toList();
+
+        log.info("Получено профилей пользователей: {}", users.size());
+        return users;
     }
 
-    public UserResponse updateUser(UUID id, UserRequest request) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() ->
-                        new UserNotFoundException(
-                                "Пользователь с таким id: " + id + " не найден"
-                        ));
-
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-
-        User updatedUser = userRepository.save(user);
-
-        return userMapper.toResponse(updatedUser);
-    }
-
-    public void deleteUser(UUID id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() ->
-                        new UserNotFoundException(
-                                "Пользователь с таким id: " + id + " не найден"
-                        ));
-
-        userRepository.deleteById(user.getId());
+    private User findUserById(UUID id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn("Пользователь с id={} не найден", id);
+                    return new UserNotFoundException(
+                            "Пользователь с id=" + id + " не найден"
+                    );
+                });
     }
 }

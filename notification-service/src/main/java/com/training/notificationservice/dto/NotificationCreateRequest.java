@@ -8,22 +8,22 @@ import com.training.notificationservice.entity.NotificationType;
 import java.util.UUID;
 
 public record NotificationCreateRequest(
-        @NotNull(message = "User ID must not be null")
+        @NotNull(message = "ID пользователя не должен быть пустым")
         UUID userId,
 
-        @NotBlank(message = "Recipient must not be blank")
-        @Email(message = "Recipient must be a valid email address")
-        @Size(max = 255, message = "Recipient must not exceed 255 characters")
+        @NotBlank(message = "Получатель не должен быть пустым")
+        @Email(message = "Email получателя должен быть корректным")
+        @Size(max = 255, message = "Email получателя не должен превышать 255 символов")
         String recipient,
 
-        @NotBlank(message = "Subject must not be blank")
-        @Size(max = 255, message = "Subject must not exceed 255 characters")
+        @NotBlank(message = "Тема сообщения не должна быть пустой")
+        @Size(max = 255, message = "Тема сообщения не должна превышать 255 символов")
         String subject,
 
-        @NotBlank(message = "Message must not be blank")
+        @NotBlank(message = "Текст сообщения не должен быть пустым")
         String message,
 
-        @NotNull(message = "Notification type must not be null")
+        @NotNull(message = "Тип уведомления не должен быть пустым")
         NotificationType type
 ) {
 }

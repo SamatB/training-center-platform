@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: remove-auth-fields-from-users
+      author: training-center
+      changes:
+        - dropColumn:
+            tableName: users
+            columnName: password
+        - dropColumn:
+            tableName: users
+            columnName: status
+        - renameColumn:
+            tableName: users
+            oldColumnName: update_at
+            newColumnName: updated_at
+            columnDataType: timestamp

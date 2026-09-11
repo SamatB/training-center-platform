@@ -23,7 +23,7 @@ public class EmailService {
         try {
             mailSender.send(mailMessage);
         } catch (MailException exception) {
-            throw new EmailSendingException("Failed to send email",
+            throw new EmailSendingException("Не удалось отправить Email",
                     exception);
         }
     }

@@ -5,14 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 
 public record EmailRequest(
 
-        @NotBlank
-        @Email
+        @NotBlank(message = "Email получателя не должен быть пустым")
+        @Email(message = "Email получателя должен быть корректным")
         String to,
 
-        @NotBlank
+        @NotBlank(message = "Тема сообщения не должна быть пустой")
         String subject,
 
-        @NotBlank
+        @NotBlank(message = "Текст сообщения не должен быть пустым")
         String message
 
 ) {

@@ -16,9 +16,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class EnrollmentRequest {
 
-    @NotNull(message = "userId не может быть null")
+    @NotNull(message = "Идентификатор пользователя не может быть пустым")
     private UUID userId;
 
-    @NotNull(message = "courseId не может быть null")
+    @NotNull(message = "Идентификатор курса не может быть пустым")
     private UUID courseId;
 }

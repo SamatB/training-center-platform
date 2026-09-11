@@ -14,7 +14,7 @@
 
     <artifactId>notification-service</artifactId>
     <name>notification-service</name>
-    <description>Notification Service for Training Center Platform</description>
+    <description>Сервис уведомлений для Training Center Platform</description>
 
     <dependencies>
         <dependency>

@@ -14,7 +14,7 @@
 
     <artifactId>user-service</artifactId>
     <name>user-service</name>
-    <description>User Service for Training Center Platform</description>
+    <description>Сервис профилей пользователей Training Center Platform</description>
 
     <dependencies>
         <dependency>

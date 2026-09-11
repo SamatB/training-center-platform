@@ -14,7 +14,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Notification Service API")
-                        .description("REST API for managing notifications")
+                        .description("REST API для управления уведомлениями")
                         .version("1.0.0")
                         .contact(new Contact()
                                 .name("TenTech Team")));

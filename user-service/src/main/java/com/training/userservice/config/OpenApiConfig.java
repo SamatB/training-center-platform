@@ -12,8 +12,8 @@ public class OpenApiConfig {
     public OpenAPI userServiceOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("User Service API")
-                        .description("API для работы с пользователями Training Center Platform")
+                        .title("API сервиса пользователей")
+                        .description("API для получения профильных данных пользователей Training Center Platform")
                         .version("v1"));
     }
 }

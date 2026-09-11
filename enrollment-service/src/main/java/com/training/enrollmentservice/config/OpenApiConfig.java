@@ -12,7 +12,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Enrollment Service API")
+                        .title("API сервиса записей на курсы")
                         .description("API для работы с записями студентов на курсы Training Center Platform")
                         .version("v1")
                 );

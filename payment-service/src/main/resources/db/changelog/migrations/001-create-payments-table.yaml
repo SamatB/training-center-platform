@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-payments-table
+      author: student
+      changes:
+        - createTable:
+            tableName: payments
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: enrollment_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: NUMERIC(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency
+                  type: VARCHAR(3)
+                  defaultValue: RUB
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(30)
+                  defaultValue: PENDING
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            tableName: payments
+            indexName: idx_payments_user_id
+            columns:
+              - column:
+                  name: user_id
+
+        - createIndex:
+            tableName: payments
+            indexName: idx_payments_enrollment_id
+            columns:
+              - column:
+                  name: enrollment_id

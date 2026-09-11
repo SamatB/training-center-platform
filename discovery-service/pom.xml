@@ -14,7 +14,7 @@
 
     <artifactId>discovery-service</artifactId>
     <name>discovery-service</name>
-    <description>Discovery Service for Training Center Platform</description>
+    <description>Сервис обнаружения и регистрации микросервисов Training Center Platform</description>
 
     <dependencies>
 

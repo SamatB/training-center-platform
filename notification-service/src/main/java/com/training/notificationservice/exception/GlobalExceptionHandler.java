@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
                         .collect(Collectors.toMap(
                                 FieldError::getField,
                                 fieldError -> fieldError.getDefaultMessage() == null
-                                        ? "Invalid value"
+                                        ? "Некорректное значение"
                                         : fieldError.getDefaultMessage(),
                                 (firstMessage, secondMessage) -> firstMessage
                         ));
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                "Validation failed",
+                "Ошибка валидации",
                 request.getRequestURI(),
                 LocalDateTime.now(),
                 validationErrors
@@ -68,7 +68,7 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                "Invalid value for parameter: " + exception.getName(),
+                "Некорректное значение параметра: " + exception.getName(),
                 request.getRequestURI(),
                 LocalDateTime.now(),
                 null
@@ -100,7 +100,7 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                "Unexpected server error",
+                "Непредвиденная ошибка сервера",
                 request.getRequestURI(),
                 LocalDateTime.now(),
                 null

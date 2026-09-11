@@ -14,7 +14,7 @@
 
     <artifactId>auth-service</artifactId>
     <name>auth-service</name>
-    <description>Auth Service for Training Center Platform</description>
+    <description>Сервис аутентификации и авторизации Training Center Platform</description>
 
     <properties>
     <jjwt.version>0.12.6</jjwt.version>

@@ -12,8 +12,8 @@ public class OpenApiConfig {
     public OpenAPI courseServiceOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Course Service API")
-                        .description("API для работы с курсами Training Center Platform")
+                        .title("API сервиса курсов")
+                        .description("API для создания, получения, обновления и удаления курсов Training Center Platform")
                         .version("v1"));
     }
 }

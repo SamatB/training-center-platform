@@ -19,8 +19,8 @@ import java.util.UUID;
 @RequestMapping("/api/notifications")
 @RequiredArgsConstructor
 @Tag(
-        name = "Notifications",
-        description = "Operations for creating and retrieving notifications"
+        name = "Уведомления",
+        description = "Операции создания, получения и отправки уведомлений"
 )
 public class NotificationController {
 
@@ -29,17 +29,17 @@ public class NotificationController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
-            summary = "Create notification",
-            description = "Creates a new notification with PENDING status"
+            summary = "Создать уведомление",
+            description = "Создаёт новое уведомление со статусом PENDING"
     )
     @ApiResponses({
             @ApiResponse(
                     responseCode = "201",
-                    description = "Notification successfully created"
+                    description = "Уведомление успешно создано"
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Invalid request data"
+                    description = "Некорректные данные запроса"
             )
     })
     public NotificationResponse create(
@@ -50,21 +50,21 @@ public class NotificationController {
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Get notification by ID",
-            description = "Returns notification data by its UUID"
+            summary = "Получить уведомление по ID",
+            description = "Возвращает данные уведомления по его UUID"
     )
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "Notification successfully found"
+                    description = "Уведомление успешно найдено"
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Invalid notification UUID"
+                    description = "Некорректный UUID уведомления"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Notification not found"
+                    description = "Уведомление не найдено"
             )
     })
     public NotificationResponse getById(@PathVariable UUID id) {
@@ -74,21 +74,21 @@ public class NotificationController {
     @PostMapping("/email")
     @ResponseStatus(HttpStatus.OK)
     @Operation(
-            summary = "Send email",
-            description = "Sends an email notification"
+            summary = "Отправить Email",
+            description = "Отправляет уведомление на электронную почту"
     )
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "Email sent successfully"
+                    description = "Email успешно отправлен"
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Invalid request data"
+                    description = "Некорректные данные запроса"
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Failed to send email"
+                    description = "Не удалось отправить Email"
             )
     })
     public void sendEmail(

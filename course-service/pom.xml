@@ -14,7 +14,7 @@
 
     <artifactId>course-service</artifactId>
     <name>course-service</name>
-    <description>Course Service for Training Center Platform</description>
+    <description>Сервис управления курсами Training Center Platform</description>
 
     <dependencies>
         <dependency>

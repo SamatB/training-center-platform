@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-role-not-null
+      author: openai
+      changes:
+        - update:
+            tableName: user_accounts
+            columns:
+              - column:
+                  name: role
+                  value: STUDENT
+            where: role IS NULL
+        - addNotNullConstraint:
+            tableName: user_accounts
+            columnName: role
+            columnDataType: varchar(30)

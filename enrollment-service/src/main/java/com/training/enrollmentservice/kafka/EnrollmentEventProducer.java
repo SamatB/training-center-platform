@@ -24,12 +24,12 @@ public class EnrollmentEventProducer {
         kafkaTemplate.send(enrollmentCreatedTopic, event)
                 .whenComplete((result, ex) -> {
                     if (ex == null) {
-                        log.info("EnrollmentCreatedEvent успешно записана в топик = {}, партиция = {}, offset = {}",
+                        log.info("Событие EnrollmentCreatedEvent успешно записано в топик = {}, партиция = {}, offset = {}",
                                 result.getRecordMetadata().topic(),
                                 result.getRecordMetadata().partition(),
                                 result.getRecordMetadata().offset());
                     } else {
-                        log.error("Провал отправки EnrollmentCreatedEvent: {}", event, ex);
+                        log.error("Ошибка отправки события EnrollmentCreatedEvent: {}", event, ex);
                     }
                 });
 
