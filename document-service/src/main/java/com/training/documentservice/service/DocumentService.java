@@ -47,6 +47,14 @@ public class DocumentService {
     }
 
     @Transactional(readOnly = true)
+    public List<DocumentResponse> getByUserId(UUID userId) {
+        return documentRepository.findByUserId(userId)
+                .stream()
+                .map(documentMapper::toResponse)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public List<DocumentResponse> getAll() {
         log.info("Получение всех документов");
         return documentRepository.findAll()

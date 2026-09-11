@@ -59,6 +59,16 @@ public class AdminUserController {
         return ResponseEntity.ok(adminUserService.getUsers(page, size, sortBy, direction, role));
     }
 
+    @Operation(summary = "Получить пользователя по id")
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserSummaryResponse> getUserById(
+            @PathVariable UUID userId
+    ) {
+        return ResponseEntity.ok(
+                adminUserService.getUserById(userId)
+        );
+    }
+
     @Operation(summary = "Удалить пользователя по id")
     @DeleteMapping("/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {

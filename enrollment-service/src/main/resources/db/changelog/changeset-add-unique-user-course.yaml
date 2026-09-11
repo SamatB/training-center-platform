@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-unique-user-course-enrollment
+      author: student
+
+      changes:
+        - addUniqueConstraint:
+            tableName: enrollments
+            columnNames: user_id, course_id
+            constraintName: uk_enrollments_user_course

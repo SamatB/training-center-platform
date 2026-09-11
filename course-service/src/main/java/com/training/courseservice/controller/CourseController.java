@@ -54,6 +54,24 @@ public class CourseController {
         return courseService.getAllCourses();
     }
 
+    @GetMapping("/teacher/{teacherId}")
+    @Operation(
+            summary = "Получить курсы преподавателя",
+            description = "Возвращает список курсов, назначенных преподавателю"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Список курсов преподавателя успешно получен"
+    )
+    public List<CourseResponse> getCoursesByTeacherId(@PathVariable UUID teacherId) {
+        log.info(
+                "Получен запрос на получение курсов преподавателя с teacherId: {}",
+                teacherId
+        );
+
+        return courseService.getCoursesByTeacherId(teacherId);
+    }
+
     @PutMapping("/{id}")
     @Operation(summary = "Обновить курс", description = "Обновляет данные существующего курса")
     @ApiResponses({

@@ -33,6 +33,22 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(PaymentAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse handlePaymentAlreadyExists(
+            PaymentAlreadyExistsException exception,
+            HttpServletRequest request
+    ) {
+        return new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                "Конфликт",
+                exception.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now(),
+                null
+        );
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidation(

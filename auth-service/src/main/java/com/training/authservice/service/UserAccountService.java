@@ -7,6 +7,7 @@ import com.training.authservice.entity.UserAccount;
 import com.training.authservice.exception.EntityAlreadyExistsException;
 import com.training.authservice.mapper.UserAccountMapper;
 import com.training.authservice.repository.UserAccountRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,16 @@ public class UserAccountService {
         UserAccount savedUserAccount = userAccountRepository.save(userAccount);
 
         return userAccountMapper.toResponse(savedUserAccount);
+    }
+
+    @Transactional(readOnly = true)
+    public UserAccountResponse getUserById(UUID userId) {
+
+        UserAccount userAccount = userAccountRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Пользователь с id " + userId + " не найден"
+                ));
+
+        return userAccountMapper.toResponse(userAccount);
     }
 }

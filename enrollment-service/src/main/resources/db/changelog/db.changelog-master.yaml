@@ -1,3 +1,6 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changeset-create-enrollments-table.yaml
+
+  - include:
+      file: db/changelog/changeset-add-unique-user-course.yaml

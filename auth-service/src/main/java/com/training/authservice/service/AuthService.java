@@ -53,9 +53,15 @@ public class AuthService {
     public ProfileUpdateResponse updateCurrentUser(UpdateProfileRequest request) {
         UserAccount user = getCurrentUserAccount();
 
-        if (userAccountRepository.existsByEmailAndIdNot(request.email(), user.getId())) {
+        boolean emailChanged =
+                !user.getEmail().equalsIgnoreCase(request.email());
+
+        if (emailChanged && userAccountRepository.existsByEmail(request.email())) {
             throw new EntityAlreadyExistsException(
-                    String.format("Пользователь с электронной почтой '%s' уже существует", request.email())
+                    String.format(
+                            "Пользователь с электронной почтой '%s' уже существует",
+                            request.email()
+                    )
             );
         }
 
@@ -65,9 +71,14 @@ public class AuthService {
         user.setUpdatedAt(LocalDateTime.now());
 
         UserAccount savedUser = userAccountRepository.save(user);
-        String newAccessToken = jwtService.generateAccessToken(savedUser);
 
-        log.info("Профиль пользователя успешно обновлён: userId={}", savedUser.getId());
+        String newAccessToken =
+                jwtService.generateAccessToken(savedUser);
+
+        log.info(
+                "Профиль пользователя успешно обновлён: userId={}",
+                savedUser.getId()
+        );
 
         return new ProfileUpdateResponse(
                 mapper.toResponse(savedUser),

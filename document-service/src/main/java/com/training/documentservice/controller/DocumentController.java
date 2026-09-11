@@ -66,6 +66,19 @@ public class DocumentController {
         return documentService.getById(id);
     }
 
+    @GetMapping("/user/{userId}")
+    @Operation(summary = "Получить документы пользователя")
+    public List<DocumentResponse> getByUserId(
+            @PathVariable UUID userId
+    ) {
+        log.info(
+                "Получен запрос на получение документов пользователя с userId={}",
+                userId
+        );
+
+        return documentService.getByUserId(userId);
+    }
+
     @GetMapping
     @Operation(summary = "Получить все документы")
     public List<DocumentResponse> getAll() {

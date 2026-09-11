@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-unique-enrollment-payment
+      author: student
+
+      changes:
+        - addUniqueConstraint:
+            tableName: payments
+            columnNames: enrollment_id
+            constraintName: uk_payments_enrollment

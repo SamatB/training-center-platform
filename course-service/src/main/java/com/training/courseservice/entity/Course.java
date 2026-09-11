@@ -26,6 +26,9 @@ public class Course {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "teacher_id")
+    private UUID teacherId;
+
     @Column(name = "teacher_name", nullable = false, length = 255)
     private String teacherName;
 

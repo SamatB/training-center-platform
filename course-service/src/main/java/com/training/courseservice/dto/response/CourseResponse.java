@@ -19,6 +19,8 @@ public class CourseResponse {
 
     private String description;
 
+    private UUID teacherId;
+
     private String teacherName;
 
     private Integer durationHours;

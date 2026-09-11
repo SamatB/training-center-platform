@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-teacher-id-to-courses
+      author: student
+
+      changes:
+        - addColumn:
+            tableName: courses
+            columns:
+              - column:
+                  name: teacher_id
+                  type: uuid

@@ -14,54 +14,104 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/enrollments")
-@Tag(name = "Записи на курсы", description = "Управление записями студентов на курсы")
+@Tag(
+        name = "Записи на курсы",
+        description = "Управление записями студентов на курсы"
+)
 @Slf4j
 public class EnrollmentController {
 
     private final EnrollmentService enrollmentService;
 
-    public EnrollmentController(EnrollmentService enrollmentService) {
+    public EnrollmentController(
+            EnrollmentService enrollmentService
+    ) {
         this.enrollmentService = enrollmentService;
     }
 
     @Operation(summary = "Создать запись на курс")
     @PostMapping
-    public EnrollmentResponse createEnrollment(@Valid @RequestBody EnrollmentRequest request) {
-
+    public EnrollmentResponse createEnrollment(
+            @Valid @RequestBody EnrollmentRequest request
+    ) {
         log.info("Получен запрос на создание записи на курс");
+
         return enrollmentService.createEnrollment(request);
     }
 
     @Operation(summary = "Получить запись по идентификатору")
     @GetMapping("/{id}")
-    public EnrollmentResponse getEnrollmentById(@PathVariable UUID id) {
+    public EnrollmentResponse getEnrollmentById(
+            @PathVariable UUID id
+    ) {
+        log.info(
+                "Получен запрос на получение записи с id: {}",
+                id
+        );
 
-        log.info("Получен запрос на получение записи с id: {}", id);
         return enrollmentService.getEnrollmentById(id);
     }
 
     @Operation(summary = "Получить все записи на курсы")
     @GetMapping
     public List<EnrollmentResponse> getAllEnrollments() {
+        log.info(
+                "Получен запрос на получение всех записей на курсы"
+        );
 
-        log.info("Получен запрос на получение всех записей на курсы");
         return enrollmentService.getAllEnrollments();
+    }
+
+    @Operation(summary = "Получить записи пользователя")
+    @GetMapping("/user/{userId}")
+    public List<EnrollmentResponse> getEnrollmentsByUserId(
+            @PathVariable UUID userId
+    ) {
+        log.info(
+                "Получен запрос на получение записей пользователя с id: {}",
+                userId
+        );
+
+        return enrollmentService.getEnrollmentsByUserId(userId);
+    }
+
+    @Operation(summary = "Получить записи по курсу")
+    @GetMapping("/course/{courseId}")
+    public List<EnrollmentResponse> getEnrollmentsByCourseId(
+            @PathVariable UUID courseId
+    ) {
+        log.info(
+                "Получен запрос на получение записей курса с id: {}",
+                courseId
+        );
+
+        return enrollmentService.getEnrollmentsByCourseId(courseId);
     }
 
     @Operation(summary = "Обновить запись на курс")
     @PutMapping("/{id}")
     public EnrollmentResponse updateEnrollment(
             @PathVariable UUID id,
-            @Valid @RequestBody EnrollmentRequest request) {
+            @Valid @RequestBody EnrollmentRequest request
+    ) {
+        log.info(
+                "Получен запрос на обновление записи с id: {}",
+                id
+        );
 
-        log.info("Получен запрос на обновление записи с id: {}", id);
         return enrollmentService.updateEnrollment(id, request);
     }
 
     @Operation(summary = "Удалить запись на курс")
     @DeleteMapping("/{id}")
-    public void deleteEnrollment(@PathVariable UUID id) {
-        log.info("Получен запрос на удаление записи с id: {}", id);
+    public void deleteEnrollment(
+            @PathVariable UUID id
+    ) {
+        log.info(
+                "Получен запрос на удаление записи с id: {}",
+                id
+        );
+
         enrollmentService.deleteEnrollment(id);
     }
 }

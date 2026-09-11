@@ -64,6 +64,13 @@ public class AdminUserService {
         return users.map(this::toSummary);
     }
 
+    @Transactional(readOnly = true)
+    public UserSummaryResponse getUserById(UUID userId) {
+        UserAccount user = getById(userId);
+
+        return toSummary(user);
+    }
+
     @Transactional
     public void deleteUser(UUID userId) {
         UserAccount target = getById(userId);

@@ -14,4 +14,6 @@ public interface PaymentRepository extends JpaRepository<Payment, UUID> {
     List<Payment> findByEnrollmentId(UUID enrollmentId);
 
     List<Payment> findByStatus(PaymentStatus status);
+
+    boolean existsByEnrollmentId(UUID enrollmentId);
 }

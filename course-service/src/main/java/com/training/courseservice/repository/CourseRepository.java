@@ -14,4 +14,6 @@ public interface CourseRepository extends JpaRepository<Course, UUID> {
     boolean existsByTitle(String title);
 
     List<Course> findByTitleContainingIgnoreCase(String title);
+
+    List<Course> findByTeacherId(UUID teacherId);
 }
