@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import com.training.enrollmentservice.dto.response.CourseResponse;
 
 import java.util.List;
 import java.util.UUID;
@@ -114,4 +115,17 @@ public class EnrollmentController {
 
         enrollmentService.deleteEnrollment(id);
     }
-}
+
+    @Operation(summary = "Получить курс через course-service")
+    @GetMapping("/courses/{courseId}")
+    public CourseResponse getCourseById(
+            @PathVariable UUID courseId
+    ){
+        log.info("Получен запрос на получение  курса с id : {}",courseId);
+        return enrollmentService.getCourseById(courseId);
+    }
+
+    }
+
+
+

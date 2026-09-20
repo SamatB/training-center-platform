@@ -1,6 +1,8 @@
 package com.training.enrollmentservice.service;
 
+import com.training.enrollmentservice.client.CourseClient;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
+import com.training.enrollmentservice.dto.response.CourseResponse;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.entity.Enrollment;
 import com.training.enrollmentservice.event.EnrollmentCreatedEvent;
@@ -10,26 +12,33 @@ import com.training.enrollmentservice.kafka.EnrollmentEventProducer;
 import com.training.enrollmentservice.mapper.EnrollmentMapper;
 import com.training.enrollmentservice.repository.EnrollmentRepository;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class EnrollmentService {
 
     private final EnrollmentRepository enrollmentRepository;
     private final EnrollmentMapper enrollmentMapper;
     private final EnrollmentEventProducer enrollmentEventProducer;
+    private final CourseClient courseClient;
+
 
     public EnrollmentService(
             EnrollmentRepository enrollmentRepository,
             EnrollmentMapper enrollmentMapper,
-            EnrollmentEventProducer enrollmentEventProducer
-    ) {
+            EnrollmentEventProducer enrollmentEventProducer,
+            CourseClient courseClient) {
+
         this.enrollmentRepository = enrollmentRepository;
         this.enrollmentMapper = enrollmentMapper;
         this.enrollmentEventProducer = enrollmentEventProducer;
+        this.courseClient = courseClient;
     }
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
@@ -73,6 +82,16 @@ public class EnrollmentService {
                         ));
 
         return enrollmentMapper.toResponse(enrollment);
+    }
+
+    public CourseResponse getCourseById(UUID courseId){
+        log.info("Начинаем получение курса с id: {}",courseId);
+        CourseResponse course = courseClient.getCourseById(courseId);
+
+        log.info("Курс с id: {} успешно получен",courseId);
+
+            return course;
+
     }
 
     public List<EnrollmentResponse> getAllEnrollments() {
