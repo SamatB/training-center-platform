@@ -43,7 +43,10 @@ public class CourseController {
     })
     public CourseResponse getCourseById(@PathVariable UUID id) {
         log.info("Получен запрос на получение курса с id: {}", id);
-        return courseService.getCourseById(id);
+        CourseResponse courseResponse = courseService.getCourseById(id);
+        log.info("Возвращаем курс с id: {}", id);
+
+        return courseResponse;
     }
 
     @GetMapping
