@@ -9,4 +9,6 @@ public interface CourseClient {
 
     @GetMapping("/api/v1/courses/{id}")
     CourseResponse getCourseById(@PathVariable("id") UUID id);
+
+
 }

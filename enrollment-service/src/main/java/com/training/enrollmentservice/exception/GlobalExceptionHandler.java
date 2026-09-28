@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
+import feign.FeignException;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
@@ -19,7 +19,19 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 LocalDateTime.now()
         );
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+    @ExceptionHandler(FeignException.NotFound.class)
+    public ResponseEntity<ErrorResponse>handleFeignNotFound(FeignException.NotFound ex) {
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND.value(),
+                LocalDateTime.now()
+        );
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

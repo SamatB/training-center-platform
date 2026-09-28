@@ -1,0 +1,11 @@
+package com.training.enrollmentservice.dto.response;
+
+import java.util.UUID;
+
+public record UserResponse (
+    UUID id
+
+    ) {
+
+
+    }

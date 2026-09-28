@@ -1,6 +1,7 @@
 package com.training.enrollmentservice.service;
 
 import com.training.enrollmentservice.client.CourseClient;
+import com.training.enrollmentservice.client.UserClient;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.CourseResponse;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -27,18 +29,20 @@ public class EnrollmentService {
     private final EnrollmentMapper enrollmentMapper;
     private final EnrollmentEventProducer enrollmentEventProducer;
     private final CourseClient courseClient;
+    private final UserClient userClient;
 
 
     public EnrollmentService(
             EnrollmentRepository enrollmentRepository,
             EnrollmentMapper enrollmentMapper,
             EnrollmentEventProducer enrollmentEventProducer,
-            CourseClient courseClient) {
+            CourseClient courseClient, UserClient userClient) {
 
         this.enrollmentRepository = enrollmentRepository;
         this.enrollmentMapper = enrollmentMapper;
         this.enrollmentEventProducer = enrollmentEventProducer;
         this.courseClient = courseClient;
+        this.userClient = userClient;
     }
 
     public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
@@ -54,6 +58,10 @@ public class EnrollmentService {
                     "Вы уже записаны на этот курс"
             );
         }
+        log.info("Проверяем существование пользователя id={}",request.getUserId());
+        userClient.getById(request.getUserId());
+        courseClient.getCourseById(request.getCourseId());
+
         Enrollment enrollment = enrollmentMapper.toEntity(request);
 
         enrollment.setEnrollmentDate(LocalDateTime.now());
