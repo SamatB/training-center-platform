@@ -10,8 +10,8 @@ jobs:                         #список работ, которые долж�
     runs-on: ubuntu-latest    #Для выполнения build используем Linux-машину с Ubuntu на GitHub.
 
     steps:                    #последовательные шаги внутри одного job.
-      - name: Check default Java
-        run: java -version    #Выполнение следующих команд в терминале Ubuntu Runner.
+      - name: Checkout repository
+        run: actions/checkout@v5    #Выполнение следующих команд в терминале Ubuntu Runner.
 
       - name: Set up Java 21
         uses: actions/setup-java@v5
@@ -19,7 +19,9 @@ jobs:                         #список работ, которые долж�
           distribution: temurin
           java-version: '21'
 
-      - name: Check Java after setup
+      - name: Check environment
         run: |
           java -version
           mvn -version
+          pwd
+          ls -la
