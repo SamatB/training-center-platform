@@ -1,0 +1,18 @@
+name: Training Center CI
+
+on:                       #означает: при каком событии запускать workflow
+  push:
+    branches:
+      - feature/cicd
+
+jobs:                         #список работ, которые должен выполнить наш CI.
+  build:                      #имя job, которое придумали мы. Можно было назвать build-project, test и т. д.
+    runs-on: ubuntu-latest    #Для выполнения build используем Linux-машину с Ubuntu на GitHub.
+
+    steps:                    #последовательные шаги внутри одного job.
+      - name: Check runner
+        run: |                #Выполнение следующих команд в терминале Ubuntu Runner.
+          echo "Hello from GitHub Actions"
+          uname -a
+          java -version
+          mvn -version
