@@ -42,16 +42,6 @@ jobs:                         #список работ, которые долж�
       - name: Show generated JAR files
         run: find . -path "*/target/*.jar" -type f
 
-      - name: Build user-service Docker image
-        run: |
-          docker build \
-            -t ghcr.io/samatb/user-service:ci \
-            -t ghcr.io/samatb/user-service:${{ github.sha }} \
-            ./user-service
-
-      - name: Show Docker images
-        run: docker images
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -59,7 +49,11 @@ jobs:                         #список работ, которые долж�
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push user-service Docker image
-        run: |
-          docker push ghcr.io/samatb/user-service:ci
-          docker push ghcr.io/samatb/user-service:${{ github.sha }}
+      - name: Build and push user-service Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./user-service
+          push: true
+          tags: |
+            ghcr.io/samatb/user-service:ci
+            ghcr.io/samatb/user-service:${{ github.sha }}
