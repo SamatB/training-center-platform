@@ -5,6 +5,10 @@ on:                       #означает: при каком событии з
     branches:
       - feature/cicd
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:                         #список работ, которые должен выполнить наш CI.
   build:                      #имя job, которое придумали мы. Можно было назвать build-project, test и т. д.
     runs-on: ubuntu-latest    #Для выполнения build используем Linux-машину с Ubuntu на GitHub.
@@ -46,3 +50,13 @@ jobs:                         #список работ, которые долж�
 
       - name: Show Docker images
         run: docker images
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push user-service Docker image
+        run: docker push ghcr.io/samatb/user-service:ci
