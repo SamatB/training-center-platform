@@ -10,9 +10,16 @@ jobs:                         #список работ, которые долж�
     runs-on: ubuntu-latest    #Для выполнения build используем Linux-машину с Ubuntu на GitHub.
 
     steps:                    #последовательные шаги внутри одного job.
-      - name: Check runner
-        run: |                #Выполнение следующих команд в терминале Ubuntu Runner.
-          echo "Hello from GitHub Actions"
-          uname -a
+      - name: Check default Java
+        run: java -version    #Выполнение следующих команд в терминале Ubuntu Runner.
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Check Java after setup
+        run: |
           java -version
           mvn -version
