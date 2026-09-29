@@ -45,7 +45,7 @@ jobs:                         #список работ, которые долж�
       - name: Build user-service Docker image
         run: |
           docker build \
-            -t training-center/user-service:ci \
+            -t ghcr.io/samatb/user-service:ci \
             ./user-service
 
       - name: Show Docker images
