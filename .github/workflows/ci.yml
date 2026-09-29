@@ -31,3 +31,9 @@ jobs:                         #список работ, которые долж�
 
       - name: Run unit tests
         run: ./mvnw test
+
+      - name: Package application
+        run: ./mvnw package -DskipTests
+
+      - name: Show generated JAR files
+        run: find . -path "*/target/*.jar" -type f
