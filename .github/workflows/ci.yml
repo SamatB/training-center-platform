@@ -37,3 +37,12 @@ jobs:                         #список работ, которые долж�
 
       - name: Show generated JAR files
         run: find . -path "*/target/*.jar" -type f
+
+      - name: Build user-service Docker image
+        run: |
+          docker build \
+            -t training-center/user-service:ci \
+            ./user-service
+
+      - name: Show Docker images
+        run: docker images
