@@ -46,6 +46,7 @@ jobs:                         #список работ, которые долж�
         run: |
           docker build \
             -t ghcr.io/samatb/user-service:ci \
+            -t ghcr.io/samatb/user-service:${{ github.sha }} \
             ./user-service
 
       - name: Show Docker images
@@ -59,4 +60,6 @@ jobs:                         #список работ, которые долж�
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push user-service Docker image
-        run: docker push ghcr.io/samatb/user-service:ci
+        run: |
+          docker push ghcr.io/samatb/user-service:ci
+          docker push ghcr.io/samatb/user-service:${{ github.sha }}
