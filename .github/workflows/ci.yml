@@ -59,6 +59,7 @@ jobs:                         #список работ, которые долж�
         service:
           - user-service
           - course-service
+          - enrollment-service
 
     steps:
       - name: Checkout repository
