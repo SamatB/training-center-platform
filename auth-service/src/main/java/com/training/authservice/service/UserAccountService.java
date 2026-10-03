@@ -1,10 +1,11 @@
 package com.training.authservice.service;
-
 import com.training.authservice.dto.request.RegisterRequest;
 import com.training.authservice.dto.response.UserAccountResponse;
 import com.training.authservice.entity.Role;
 import com.training.authservice.entity.UserAccount;
+import com.training.authservice.event.UserRegisteredEvent;
 import com.training.authservice.exception.EntityAlreadyExistsException;
+import com.training.authservice.kafka.UserEventProducer;
 import com.training.authservice.mapper.UserAccountMapper;
 import com.training.authservice.repository.UserAccountRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,18 +13,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class UserAccountService {
 
     private final UserAccountRepository userAccountRepository;
     private final UserAccountMapper userAccountMapper;
     private final PasswordEncoder passwordEncoder;
+    private final UserEventProducer userEventProducer;
 
     public UserAccountResponse register(RegisterRequest request) {
 
@@ -44,7 +47,14 @@ public class UserAccountService {
         userAccount.setEnabled(true);
 
         UserAccount savedUserAccount = userAccountRepository.save(userAccount);
+        UserRegisteredEvent event = new UserRegisteredEvent(
+                savedUserAccount.getId(),
+                savedUserAccount.getFirstName(),
+                savedUserAccount.getLastName(),
+                savedUserAccount.getEmail()
 
+                );
+        userEventProducer.sendUserRegisteredEvent(event);
         return userAccountMapper.toResponse(savedUserAccount);
     }
 
@@ -55,6 +65,7 @@ public class UserAccountService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Пользователь с id " + userId + " не найден"
                 ));
+
 
         return userAccountMapper.toResponse(userAccount);
     }

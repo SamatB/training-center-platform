@@ -5,6 +5,18 @@ spring:
   application:
     name: user-service
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: user-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.training.userservice.event
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.training.userservice.event.UserRegisteredEvent
+
   datasource:
     url: jdbc:postgresql://localhost:5433/user_db
     username: postgres
@@ -23,3 +35,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+app:
+  kafka:
+    topics:
+      user-registered: user.registered
