@@ -12,7 +12,5 @@ public interface UserClient {
     UserResponse getById(@PathVariable("id")UUID id);
 
 
-
-
-    }
+}
 
