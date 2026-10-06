@@ -33,8 +33,13 @@ jobs:                         #список работ, которые долж�
       - name: Compile project
         run: ./mvnw clean compile
 
-      - name: Run unit tests
+      - name: Run unit and integration tests
         run: ./mvnw test
+
+      - name: SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
       - name: Package application
         run: ./mvnw package -DskipTests
