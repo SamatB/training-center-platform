@@ -60,6 +60,12 @@ jobs:                         #список работ, которые долж�
           - user-service
           - course-service
           - enrollment-service
+          - notification-service
+          - payment-service
+          - document-service
+          - auth-service
+          - api-gateway
+          - discovery-service
 
     steps:
       - name: Checkout repository
