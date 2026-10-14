@@ -4,6 +4,9 @@ on:                       #означает: при каком событии з
   push:
     branches:
       - feature/cicd
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
