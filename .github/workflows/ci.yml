@@ -4,6 +4,7 @@ on:                       #означает: при каком событии з
   push:
     branches:
       - feature/cicd
+      - main
   pull_request:
     branches:
       - main
