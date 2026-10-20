@@ -2,6 +2,7 @@ package com.training.enrollmentservice.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import com.training.enrollmentservice.dto.response.UserResponse;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -14,4 +15,3 @@ public interface UserClient {
     UserResponse getById(@PathVariable("id") UUID id);
 
 }
-
