@@ -28,7 +28,11 @@ public class UserController {
     @Operation(summary = "Получить профиль пользователя по id")
     public ResponseEntity<UserResponse> getUserById(@PathVariable UUID id) {
         log.info("Получен запрос на получение профиля пользователя id={}", id);
-        return ResponseEntity.ok(userService.getUserById(id));
+
+        UserResponse user = userService.getUserById(id);
+
+        log.info("Возвращаем профиль пользователя id={}", id);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping

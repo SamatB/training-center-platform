@@ -2,10 +2,10 @@ package com.training.enrollmentservice.dto.response;
 
 import java.util.UUID;
 
-public record UserResponse (
-    UUID id
-
-    ) {
-
-
-    }
+public record UserResponse(
+        UUID id,
+        String firstName,
+        String lastName,
+        String email
+) {
+}
