@@ -60,6 +60,8 @@ public class EnrollmentService {
         }
         log.info("Проверяем существование пользователя id={}", request.getUserId());
         userClient.getById(request.getUserId());
+
+        log.info("Проверяем существование курса id={}", request.getCourseId());
         courseClient.getCourseById(request.getCourseId());
 
         Enrollment enrollment = enrollmentMapper.toEntity(request);

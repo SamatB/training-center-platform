@@ -1,4 +1,3 @@
-
 package com.training.enrollmentservice.client;
 
 import com.training.enrollmentservice.dto.response.UserResponse;
@@ -12,5 +11,5 @@ import java.util.UUID;
 public interface UserClient {
 
     @GetMapping("/api/v1/users/{id}")
-    UserResponse getById(@PathVariable("id") UUID id);
+    UserResponse getById(@PathVariable UUID id);
 }
