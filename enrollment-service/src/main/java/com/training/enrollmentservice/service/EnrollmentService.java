@@ -12,9 +12,9 @@ import com.training.enrollmentservice.exception.EnrollmentNotFoundException;
 import com.training.enrollmentservice.kafka.EnrollmentEventProducer;
 import com.training.enrollmentservice.mapper.EnrollmentMapper;
 import com.training.enrollmentservice.repository.EnrollmentRepository;
+import com.training.enrollmentservice.dto.response.UserResponse;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
-
 
 
 import java.time.LocalDateTime;
@@ -94,14 +94,23 @@ public class EnrollmentService {
         return enrollmentMapper.toResponse(enrollment);
     }
 
-    public CourseResponse getCourseById(UUID courseId){
-        log.info("Начинаем получение курса с id: {}",courseId);
+    public CourseResponse getCourseById(UUID courseId) {
+        log.info("Начинаем получение курса с id: {}", courseId);
         CourseResponse course = courseClient.getCourseById(courseId);
 
-        log.info("Курс с id: {} успешно получен",courseId);
+        log.info("Курс с id: {} успешно получен", courseId);
 
-            return course;
+        return course;
 
+    }
+
+    public UserResponse getUserById(UUID userId) {
+        log.info("Начинаем получение пользователя с id={}", userId);
+        UserResponse user = userClient.getById(userId);
+
+        log.info("Пользователь с id={} успешно получен", userId);
+
+        return user;
     }
 
     public List<EnrollmentResponse> getAllEnrollments() {

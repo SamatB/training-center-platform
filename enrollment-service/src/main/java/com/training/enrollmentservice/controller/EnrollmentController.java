@@ -2,6 +2,7 @@ package com.training.enrollmentservice.controller;
 
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
+import com.training.enrollmentservice.dto.response.UserResponse;
 import com.training.enrollmentservice.service.EnrollmentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -120,12 +121,20 @@ public class EnrollmentController {
     @GetMapping("/courses/{courseId}")
     public CourseResponse getCourseById(
             @PathVariable UUID courseId
-    ){
-        log.info("Получен запрос на получение  курса с id : {}",courseId);
+    ) {
+        log.info("Получен запрос на получение  курса с id : {}", courseId);
         return enrollmentService.getCourseById(courseId);
     }
 
+    @Operation(summary = "Получить профиль пользователя через user-service")
+    @GetMapping("/users/{userId}")
+    public UserResponse getUserById(@PathVariable UUID userId) {
+        log.info("Получен запрос на получение профиля пользователя id={}", userId);
+
+        return enrollmentService.getUserById(userId);
     }
+}
+
 
 
 
