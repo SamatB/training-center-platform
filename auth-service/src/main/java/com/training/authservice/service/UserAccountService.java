@@ -51,10 +51,10 @@ public class UserAccountService {
                 savedUserAccount.getId(),
                 savedUserAccount.getFirstName(),
                 savedUserAccount.getLastName(),
-                savedUserAccount.getEmail()
+                savedUserAccount.getEmail());
 
-                );
         userEventProducer.sendUserRegisteredEvent(event);
+
         return userAccountMapper.toResponse(savedUserAccount);
     }
 
