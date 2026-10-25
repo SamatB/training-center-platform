@@ -3,7 +3,6 @@ name: Training Center CI
 on:                       #означает: при каком событии запускать workflow
   push:
     branches:
-      - feature/cicd
       - main
   pull_request:
     branches:
