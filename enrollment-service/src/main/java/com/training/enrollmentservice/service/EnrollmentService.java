@@ -1,5 +1,4 @@
 package com.training.enrollmentservice.service;
-
 import com.training.enrollmentservice.client.CourseClient;
 import com.training.enrollmentservice.client.UserClient;
 import com.training.enrollmentservice.dto.request.EnrollmentRequest;
@@ -7,6 +6,7 @@ import com.training.enrollmentservice.dto.response.CourseResponse;
 import com.training.enrollmentservice.dto.response.EnrollmentResponse;
 import com.training.enrollmentservice.entity.Enrollment;
 import com.training.enrollmentservice.event.EnrollmentCreatedEvent;
+import com.training.enrollmentservice.exception.DownstreamServiceException;
 import com.training.enrollmentservice.exception.EnrollmentAlreadyExistsException;
 import com.training.enrollmentservice.exception.EnrollmentNotFoundException;
 import com.training.enrollmentservice.kafka.EnrollmentEventProducer;
@@ -15,8 +15,7 @@ import com.training.enrollmentservice.repository.EnrollmentRepository;
 import com.training.enrollmentservice.dto.response.UserResponse;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
-
-
+import feign.FeignException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -30,7 +29,6 @@ public class EnrollmentService {
     private final EnrollmentEventProducer enrollmentEventProducer;
     private final CourseClient courseClient;
     private final UserClient userClient;
-
 
     public EnrollmentService(
             EnrollmentRepository enrollmentRepository,
@@ -59,10 +57,38 @@ public class EnrollmentService {
             );
         }
         log.info("Проверяем существование пользователя id={}", request.getUserId());
-        userClient.getById(request.getUserId());
+        try {
+            userClient.getById(request.getUserId());
+        } catch (FeignException ex) {
+            throw new DownstreamServiceException(
+                    "user-service",
+                    ex.status(),
+                    request.getUserId().toString(),
+                    ex.status() == 404
+                            ? "Пользователь не найден"
+                            : (ex.status() < 0 || ex.status() >= 500)
+                            ? "Сервис пользователей временно недоступен"
+                            : "Ошибка при обращении к сервису пользователей",
+                    ex
+            );
+        }
 
         log.info("Проверяем существование курса id={}", request.getCourseId());
-        courseClient.getCourseById(request.getCourseId());
+        try {
+            courseClient.getCourseById(request.getCourseId());
+        } catch (FeignException ex) {
+            throw new DownstreamServiceException(
+                    "course-service",
+                    ex.status(),
+                    request.getCourseId().toString(),
+                    ex.status() == 404
+                            ? "Курс не найден"
+                            : (ex.status() < 0 || ex.status() >= 500)
+                            ? "Сервис курсов временно недоступен"
+                            : "Ошибка при обращении к сервису курсов",
+                    ex
+            );
+        }
 
         Enrollment enrollment = enrollmentMapper.toEntity(request);
 
@@ -96,21 +122,49 @@ public class EnrollmentService {
 
     public CourseResponse getCourseById(UUID courseId) {
         log.info("Начинаем получение курса с id: {}", courseId);
-        CourseResponse course = courseClient.getCourseById(courseId);
+        try {
+            CourseResponse course = courseClient.getCourseById(courseId);
+            log.info("Курс с id: {} успешно получен", courseId);
 
-        log.info("Курс с id: {} успешно получен", courseId);
+            return course;
 
-        return course;
-
+        } catch (FeignException ex) {
+            throw new DownstreamServiceException(
+                    "course-service",
+                    ex.status(),
+                    courseId.toString(),
+                    ex.status() == 404
+                            ? "Курс не найден"
+                            : (ex.status() < 0 || ex.status() >= 500)
+                            ? "Сервис курсов временно недоступен"
+                            : "Ошибка при обращении к сервису курсов",
+                    ex
+            );
+        }
     }
 
     public UserResponse getUserById(UUID userId) {
         log.info("Начинаем получение пользователя с id={}", userId);
-        UserResponse user = userClient.getById(userId);
 
-        log.info("Пользователь с id={} успешно получен", userId);
+        try {
+            UserResponse user = userClient.getById(userId);
 
-        return user;
+            log.info("Пользователь с id={} успешно получен", userId);
+
+            return user;
+        } catch (FeignException ex) {
+            throw new DownstreamServiceException(
+                    "user-service",
+                    ex.status(),
+                    userId.toString(),
+                    ex.status() == 404
+                            ? "Пользователь не найден"
+                            : (ex.status() < 0 || ex.status() >= 500)
+                            ? "Сервис пользователей временно недоступен"
+                            : "Ошибка при обращении к сервису пользователей",
+                    ex
+            );
+        }
     }
 
     public List<EnrollmentResponse> getAllEnrollments() {
