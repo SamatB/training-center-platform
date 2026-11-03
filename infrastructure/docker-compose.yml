@@ -111,9 +111,7 @@ services:
       - discovery-service
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: ghcr.io/samatb/frontend:ci
     container_name: frontend
     ports:
       - "5173:80"

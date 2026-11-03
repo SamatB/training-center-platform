@@ -103,3 +103,28 @@ jobs:                         #список работ, которые долж�
           tags: |
             ghcr.io/samatb/${{ matrix.service }}:ci
             ghcr.io/samatb/${{ matrix.service }}:${{ github.sha }}
+
+  build-frontend-image:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push frontend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          push: true
+          tags: |
+            ghcr.io/samatb/frontend:ci
+            ghcr.io/samatb/frontend:${{ github.sha }}
