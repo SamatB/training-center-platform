@@ -6,6 +6,16 @@ services:
     ports:
       - "8761:8761"
 
+  api-gateway:
+    image: ghcr.io/samatb/api-gateway:ci
+    container_name: api-gateway
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-service
+
   user-service:
     image: ghcr.io/samatb/user-service:ci
     container_name: user-service
@@ -18,6 +28,7 @@ services:
     depends_on:
       - user-postgres
       - discovery-service
+      - kafka
 
   course-service:
     image: ghcr.io/samatb/course-service:ci
@@ -29,6 +40,74 @@ services:
       - "8082:8082"
     depends_on:
       - course-postgres
+      - discovery-service
+
+  enrollment-service:
+    image: ghcr.io/samatb/enrollment-service:ci
+    container_name: enrollment-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://enrollment-postgres:5432/enrollment_db
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: training-kafka:29092
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+    ports:
+      - "8083:8083"
+    depends_on:
+      - enrollment-postgres
+      - discovery-service
+      - kafka
+
+  auth-service:
+    image: ghcr.io/samatb/auth-service:ci
+    container_name: auth-service
+    environment:
+      AUTH_DB_URL: jdbc:postgresql://auth-postgres:5432/auth_db
+      EUREKA_URL: http://discovery-service:8761/eureka/
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: training-kafka:29092
+    ports:
+      - "8085:8085"
+    depends_on:
+      - auth-postgres
+      - discovery-service
+      - kafka
+
+  payment-service:
+    image: ghcr.io/samatb/payment-service:ci
+    container_name: payment-service
+    environment:
+      PAYMENT_DB_URL: jdbc:postgresql://payment-postgres:5432/payment_db
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+    ports:
+      - "8086:8086"
+    depends_on:
+      - payment-postgres
+      - discovery-service
+
+  notification-service:
+    image: ghcr.io/samatb/notification-service:ci
+    container_name: notification-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://notification-postgres:5432/notification_db
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: training-kafka:29092
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+    ports:
+      - "8084:8084"
+    depends_on:
+      - notification-postgres
+      - discovery-service
+      - kafka
+
+  document-service:
+    image: ghcr.io/samatb/document-service:ci
+    container_name: document-service
+    environment:
+      DOCUMENT_DB_URL: jdbc:postgresql://document-postgres:5432/document_db
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+    ports:
+      - "8087:8087"
+    depends_on:
+      - document-postgres
       - discovery-service
 
   user-postgres:
