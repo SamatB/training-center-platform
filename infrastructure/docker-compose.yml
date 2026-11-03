@@ -110,6 +110,16 @@ services:
       - document-postgres
       - discovery-service
 
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - api-gateway
+
   user-postgres:
     image: postgres:16
     container_name: user-postgres
