@@ -6,11 +6,41 @@ spring:
     gateway:                                # ????????? API Gateway
       server:                               # ????????? Gateway-???????
         webflux:                            # ?????????? ?????????? WebFlux Gateway
-          routes:                           # ?????? ????????? Gateway
-            - id: course-service            # ?????????? ??? ????????
-              uri: lb://course-service      # ???? ????????? ??????: ????? course-service ????? Eureka
-              predicates:                   # ???????, ??? ??????? ????????? ???????
-                - Path=/api/v1/courses/**   # ??? ??????? ?? ????? ???? ?????????? ? course-service
+          routes:
+            - id: auth-service
+              uri: lb://auth-service
+              predicates:
+                - Path=/api/auth/**
+
+            - id: user-service
+              uri: lb://user-service
+              predicates:
+                - Path=/api/v1/users/**
+
+            - id: course-service
+              uri: lb://course-service
+              predicates:
+                - Path=/api/v1/courses/**
+
+            - id: enrollment-service
+              uri: lb://enrollment-service
+              predicates:
+                - Path=/api/v1/enrollments/**
+
+            - id: notification-service
+              uri: lb://notification-service
+              predicates:
+                - Path=/api/notifications/**
+
+            - id: payment-service
+              uri: lb://payment-service
+              predicates:
+                - Path=/api/payments/**
+
+            - id: document-service
+              uri: lb://document-service
+              predicates:
+                - Path=/api/documents/**
 
           globalcors:
             cors-configurations:

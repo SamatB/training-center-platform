@@ -65,6 +65,10 @@ replay_pid*
 **/.env
 **/.env.*
 
+# Keep safe templates in Git
+!.env.example
+!**/.env.example
+
 # ==========================
 # Local Spring profiles
 # ==========================
