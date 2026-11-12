@@ -51,6 +51,7 @@ app:
   kafka:
     topics:
       enrollment-created: enrollments.created
+      user-registered: user.registered
 
 springdoc:
   api-docs:
