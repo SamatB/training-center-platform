@@ -32,6 +32,7 @@ spring:
               uri: http://localhost:8087
               predicates:
                 - Path=/api/documents/**
+
 eureka:
   client:
     service-url:
