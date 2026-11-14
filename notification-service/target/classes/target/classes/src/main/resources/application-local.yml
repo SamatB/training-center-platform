@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/notification_db
+    username: postgres
+    password: postgres
+  kafka:
+    bootstrap-servers: localhost:9092
+  cloud:
+    openfeign:
+      client:
+        config:
+          user-service:
+            url: http://localhost:8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

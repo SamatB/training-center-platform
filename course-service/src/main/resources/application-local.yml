@@ -3,6 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5434/course_db
     username: postgres
     password: postgres
+
 eureka:
   client:
     service-url:
