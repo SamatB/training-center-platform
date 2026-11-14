@@ -1,0 +1,41 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: http://localhost:8085
+              predicates:
+                - Path=/api/auth/**
+            - id: user-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/v1/users/**
+            - id: course-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/v1/courses/**
+            - id: enrollment-service
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/v1/enrollments/**
+            - id: notification-service
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/notifications/**
+            - id: payment-service
+              uri: http://localhost:8086
+              predicates:
+                - Path=/api/payments/**
+            - id: document-service
+              uri: http://localhost:8087
+              predicates:
+                - Path=/api/documents/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: host.docker.internal
+    prefer-ip-address: false
