@@ -27,6 +27,7 @@ public class UserRegisteredListener {
     public void handle(UserRegisteredEvent event) {
 
         log.info("Получено UserRegisteredEvent: userId={}, email={}", event.userId(), event.email());
+
         log.info("Получение профиля пользователя из user-service: userId={}", event.userId());
 
         UserResponse user = userClient.getUserById(event.userId());
@@ -41,7 +42,9 @@ public class UserRegisteredListener {
                 """.formatted(event.firstName());
 
         log.info("Отправка приветственного Email: userId={}", user.id());
+
         notificationService.sendEmail(user.email(), subject, message);
+
         log.info("Приветственное уведомление успешно отправлено: userId={}", user.id());
     }
 }
